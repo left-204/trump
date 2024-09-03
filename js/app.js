@@ -18,7 +18,7 @@ document.getElementById("get").addEventListener("click", async () => {
     console.log(apiUrl2)
     let response2 = await fetch(apiUrl2);
         //カードを2枚引いたやつをjs型に変更
-    let trump2 = await response2.json();
+    trump2 = await response2.json();
     console.log(trump2.cards);
     //imgタグを生成
     let card_img = document.createElement("img");
@@ -33,6 +33,8 @@ document.getElementById("get").addEventListener("click", async () => {
     //表示
     disp.appendChild(card_img);
     disp.appendChild(modelurl);
+    
+    button_set();
 
     //成功した場合
     apiUrls = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/draw/?count=1";
