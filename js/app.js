@@ -34,6 +34,8 @@ document.getElementById("get").addEventListener("click", async () => {
     disp.appendChild(card_img);
     disp.appendChild(modelurl);
 
+    button_set();
+
     //成功した場合
     apiUrls = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/draw/?count=1";
     console.log(apiUrls)
