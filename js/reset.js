@@ -18,6 +18,8 @@ function reset(){
     display.removeChild(Low)
     let reset = document.getElementById("reset");
     display.removeChild(reset)
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = "";
 };
 async function start(){
     let display = document.getElementById("display");
