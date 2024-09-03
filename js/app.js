@@ -32,8 +32,21 @@ document.getElementById("get").addEventListener("click", async () => {
     let disp = document.getElementById("trump_table");
     //表示
     disp.appendChild(card_img);
-    backpngurl ="https://www.deckofcardsapi.com/static/img/back.png"
+    disp.appendChild(modelurl);
+
+    //成功した場合
+    apiUrls = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/draw/?count=1";
+    console.log(apiUrls)
+    let responses = await fetch(apiUrls);
+        //カードを1枚引いたやつをjs型に変更
+    let trumps = await responses.json();
+    let new_card = document.createElement("img");
+    new_card.src = "https://www.deckofcardsapi.com/static/img/back.png";
+
+    //画面遷移後の場合↓ 
+    //let disp = document.getElementById("trump_table");
     
+    disp.appendChild(new_card);
 });
 
 
