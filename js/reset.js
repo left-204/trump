@@ -1,11 +1,22 @@
-//シャッフルして山札生成
-const apiUrl = "https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1";
-let deck_id ="";
-let apiUrl2 = "";
-document.getElementById("get").addEventListener("click", async () => {
+//デッキを再構成
+document.getElementById("reset").addEventListener("click", function ()  {
+    const trump_tableDiv = document.getElementById("trump_table");
+    trump_tableDiv.innerHTML = "";
     let display = document.getElementById("display");
-    let get = document.getElementById("get");
-    display.removeChild(get)
+    //ボタンを作る
+    let start = document.createElement("button");
+    //ボタンに名前
+    start.innerHTML = "スタート";
+    //ボタンの動作
+    start.setAttribute('onclick', 'start()');
+    //idの付与
+    start.id = 'start'
+    display.appendChild(start);
+});
+async function start(){
+    let display = document.getElementById("display");
+    let start = document.getElementById("start");
+    display.removeChild(start)
     let response = await fetch(apiUrl);
     //jsの型に変換
     let trump = await response.json();
@@ -27,5 +38,4 @@ document.getElementById("get").addEventListener("click", async () => {
     //表示
     disp.appendChild(card_img);
     backpngurl ="https://www.deckofcardsapi.com/static/img/back.png"
-    
-});
+}
