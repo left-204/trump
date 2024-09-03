@@ -2,6 +2,7 @@
 const apiUrl = "https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1";
 let deck_id ="";
 let apiUrl2 = "";
+let trump2 ="";
 document.getElementById("get").addEventListener("click", async () => {
     let display = document.getElementById("display");
     let get = document.getElementById("get");
@@ -17,15 +18,22 @@ document.getElementById("get").addEventListener("click", async () => {
     console.log(apiUrl2)
     let response2 = await fetch(apiUrl2);
         //カードを2枚引いたやつをjs型に変更
-    let trump2 = await response2.json();
-    console.log(trump2.cards[0]);
+    trump2 = await response2.json();
+    console.log(trump2.cards);
     //imgタグを生成
     let card_img = document.createElement("img");
+    let card_img2 = document.createElement("img");
+    let modelurl = document.createElement("img");
     //imgタグにセット
     card_img.src = trump2.cards[0].image;
+    card_img2.src = trump2.cards[1].image;
+    modelurl.src = trump2.cards[1].image;
+    modelurl.src="https://www.deckofcardsapi.com/static/img/back.png";
     let disp = document.getElementById("trump_table");
     //表示
     disp.appendChild(card_img);
     backpngurl ="https://www.deckofcardsapi.com/static/img/back.png"
     
 });
+
+
