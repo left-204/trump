@@ -6,7 +6,7 @@ let deck_id ="";
 let apiUrl_draw = "";
 //親と手札を管理
 let trump2 ="";
-//document.getElementById("get").addEventListener("click", async () => {
+
 async function start(){
     let display = document.getElementById("display");
     //ボタンを作る
@@ -48,10 +48,20 @@ async function start(){
     //表示
     disp.appendChild(card_img);
     disp.appendChild(modelurl);
+    
+    //残り枚数
+    let rest = "";
+    rest = "https://deckofcardsapi.com/api/deck/" + deck_id;
+    let resthand = await fetch(rest);
+    let resthands = await resthand.json();
+    console.log(resthands.remaining);
+    console.log(resthands);
 
+    let num = document.createElement("p");
+    num.innerText = resthands.remaining;
+    disp.appendChild(num);
     button_set();
 }
-//});
 
 async function next(){
    //成功した場合
@@ -83,14 +93,3 @@ async function next(){
 }
 
 
-    // //残り枚数
-    // let rest = "";
-    // rest = "https://deckofcardsapi.com/api/deck/" + deck_id;
-    // let resthand = await fetch(rest);
-    // let resthands = await resthand.json();
-    // console.log(resthands.remaining);
-    // console.log(resthands);
-
-    // let num = document.createElement("p");
-    // num.innerText = resthands.remaining;
-    // disp.appendChild(num);
