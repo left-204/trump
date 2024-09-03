@@ -5,6 +5,15 @@ let apiUrl2 = "";
 let trump2 ="";
 document.getElementById("get").addEventListener("click", async () => {
     let display = document.getElementById("display");
+    //ボタンを作る
+    let reset = document.createElement("button");
+    //ボタンに名前
+    reset.innerHTML = "やめる";
+    //ボタンの動作
+    reset.setAttribute('onclick', 'reset()');
+    //idの付与
+    reset.id = 'reset'
+    display.appendChild(reset);
     let get = document.getElementById("get");
     display.removeChild(get)
     let response = await fetch(apiUrl);
