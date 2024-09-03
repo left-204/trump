@@ -1,9 +1,13 @@
 //シャッフルして山札生成
 const apiUrl = "https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1";
+//山札共有用
 let deck_id ="";
-let apiUrl2 = "";
+//ドローの処理を簡単にするための共有変数
+let apiUrl_draw = "";
+//親と手札を管理
 let trump2 ="";
-document.getElementById("get").addEventListener("click", async () => {
+//document.getElementById("get").addEventListener("click", async () => {
+async function start(){
     let display = document.getElementById("display");
     //ボタンを作る
     let reset = document.createElement("button");
@@ -14,20 +18,20 @@ document.getElementById("get").addEventListener("click", async () => {
     //idの付与
     reset.id = 'reset'
     display.appendChild(reset);
-    let get = document.getElementById("get");
-    display.removeChild(get)
+    let start = document.getElementById("start");
+    display.removeChild(start)
     let response = await fetch(apiUrl);
     //jsの型に変換
-    let trump = await response.json();
-    console.log(trump.deck_id);
+    let deck = await response.json();
+    console.log(deck.deck_id);
 
     //deck_idを取得して一枚引く
-    deck_id = trump.deck_id;
-    apiUrl2 = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/draw/?count=2";
-    console.log(apiUrl2)
-    let response2 = await fetch(apiUrl2);
-        //カードを2枚引いたやつをjs型に変更
-    trump2 = await response2.json();
+    deck_id = deck.deck_id;
+    apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/draw/?count=2";
+    console.log(apiUrl_draw)
+    let response_draw = await fetch(apiUrl_draw);
+    //カードを2枚引いたやつをjs型に変更
+    trump2 = await response_draw.json();
     console.log(trump2.cards);
     //imgタグを生成
     let card_img = document.createElement("img");
@@ -46,8 +50,8 @@ document.getElementById("get").addEventListener("click", async () => {
     disp.appendChild(modelurl);
 
     button_set();
-
-});
+}
+//});
 
 async function next(){
    //成功した場合
@@ -67,3 +71,14 @@ async function next(){
 }
 
 
+    // //残り枚数
+    // let rest = "";
+    // rest = "https://deckofcardsapi.com/api/deck/" + deck_id;
+    // let resthand = await fetch(rest);
+    // let resthands = await resthand.json();
+    // console.log(resthands.remaining);
+    // console.log(resthands);
+
+    // let num = document.createElement("p");
+    // num.innerText = resthands.remaining;
+    // disp.appendChild(num);

@@ -21,7 +21,7 @@ function high(){
     console.log("high");
     let subject = numchange(trump2.cards[0].value);
     let hand = numchange(trump2.cards[1].value)
-
+    console.log(subject + "<" + hand);
     let modelurl = document.getElementById("next_card");
     modelurl.src = trump2.cards[1].image;
     disp.appendChild(modelurl);
@@ -41,7 +41,7 @@ function low(){
     console.log("low");
     let subject = numchange(trump2.cards[0].value);
     let hand = numchange(trump2.cards[1].value)
-
+    console.log(subject + ">" + hand);
     let modelurl = document.getElementById("next_card");
     modelurl.src = trump2.cards[1].image;
     disp.appendChild(modelurl);
