@@ -22,8 +22,10 @@ document.getElementById("get").addEventListener("click", async () => {
     console.log(trump2.cards);
     //imgタグを生成
     let card_img = document.createElement("img");
+    card_img.id = "subject";
     let card_img2 = document.createElement("img");
     let modelurl = document.createElement("img");
+    modelurl.id ="next_card";
     //imgタグにセット
     card_img.src = trump2.cards[0].image;
     card_img2.src = trump2.cards[1].image;
@@ -36,19 +38,23 @@ document.getElementById("get").addEventListener("click", async () => {
 
     button_set();
 
-    //成功した場合
+});
+
+async function next(){
+   //成功した場合
     apiUrls = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/draw/?count=1";
     console.log(apiUrls)
     let responses = await fetch(apiUrls);
         //カードを1枚引いたやつをjs型に変更
-    let trumps = await responses.json();
-    let new_card = document.createElement("img");
-    new_card.src = "https://www.deckofcardsapi.com/static/img/back.png";
+    let draw_card = await responses.json();
+    trump2.cards[1] = draw_card.cards[0];
+    console.log(trump2.cards)
+    next_card.src = "https://www.deckofcardsapi.com/static/img/back.png";
 
     //画面遷移後の場合↓ 
     //let disp = document.getElementById("trump_table");
     
-    disp.appendChild(new_card);
-});
+    disp.appendChild(next_card);
+}
 
 
