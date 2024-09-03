@@ -64,6 +64,18 @@ async function next(){
     //let disp = document.getElementById("trump_table");
     
     disp.appendChild(next_card);
+
+    //残り枚数
+    let rest = "";
+    rest = "https://deckofcardsapi.com/api/deck/" + deck_id;
+    let resthand = await fetch(rest);
+    let resthands = await resthand.json();
+    console.log(resthands.remaining);
+    console.log(resthands);
+
+    let num = document.createElement("p");
+    num.innerText = resthands.remaining;
+    disp.appendChild(num);
 }
 
 
