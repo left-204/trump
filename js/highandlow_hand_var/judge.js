@@ -30,11 +30,11 @@ function button_set(){
 
 function high(){
     console.log("high");
-    let subject = numchange(trump2.cards[0].value);
-    let hand = numchange(trump2.cards[1].value)
+    let subject = numchange(enemy_hand.cards[pointer].value);
+    let hand = numchange(player_hand.cards[pointer].value)
     console.log(subject + "<" + hand);
     let modelurl = document.getElementById("next_card");
-    modelurl.src = trump2.cards[1].image;
+    modelurl.src = player_hand.cards[pointer].image;
     disp.appendChild(modelurl);
 
     if(subject < hand){
@@ -51,11 +51,11 @@ function high(){
 
 function low(){
     console.log("low");
-    let subject = numchange(trump2.cards[0].value);
-    let hand = numchange(trump2.cards[1].value)
+    let subject = numchange(enemy_hand.cards[pointer].value);
+    let hand = numchange(player_hand.cards[pointer].value)
     console.log(subject + ">" + hand);
     let modelurl = document.getElementById("next_card");
-    modelurl.src = trump2.cards[1].image;
+    modelurl.src = player_hand.cards[pointer].image;
     disp.appendChild(modelurl);
     
     if(subject > hand){
@@ -101,10 +101,9 @@ function win(){
     result_id.textContent = "勝ち!!";
     score += 1;
     score_id.textContent = score;
-    let subject_img = document.getElementById("subject");
-    subject_img.src = trump2.cards[1].image;
-    trump2.cards[0] = trump2.cards[1];
-    disp.appendChild(subject_img);
+    let next_img = document.getElementById("next_card");
+    next_img.src = player_hand.cards[pointer].image;
+    disp.appendChild(next_img);
     next();
 }
 
