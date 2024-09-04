@@ -6,7 +6,7 @@ let deck_id ="";
 let apiUrl_draw = "";
 //親と手札を管理
 let trump2 ="";
-//document.getElementById("get").addEventListener("click", async () => {
+
 async function start(){
     let display = document.getElementById("display");
     //ボタンを作る
@@ -49,9 +49,10 @@ async function start(){
     disp.appendChild(card_img);
     disp.appendChild(modelurl);
 
-    button_set();
+    rest_display()
+
+    button_set()
 }
-//});
 
 async function next(){
    //成功した場合
@@ -68,29 +69,25 @@ async function next(){
     //let disp = document.getElementById("trump_table");
     
     disp.appendChild(next_card);
+}
 
-    //残り枚数
+async function rest_display(){
+    let rest_id = document.getElementById("rest");
     let rest = "";
     rest = "https://deckofcardsapi.com/api/deck/" + deck_id;
     let resthand = await fetch(rest);
     let resthands = await resthand.json();
     console.log(resthands.remaining);
     console.log(resthands);
-
     let num = document.createElement("p");
     num.innerText = resthands.remaining;
-    disp.appendChild(num);
+    num.id = "rest";
+    rest_id = document.getElementById("rest");
+    num.innerHTML = "";
+    num.innerText = resthands.remaining;
+    //残り枚数
+    
+   
+    rest_id.appendChild(num);
 }
 
-
-    // //残り枚数
-    // let rest = "";
-    // rest = "https://deckofcardsapi.com/api/deck/" + deck_id;
-    // let resthand = await fetch(rest);
-    // let resthands = await resthand.json();
-    // console.log(resthands.remaining);
-    // console.log(resthands);
-
-    // let num = document.createElement("p");
-    // num.innerText = resthands.remaining;
-    // disp.appendChild(num);
