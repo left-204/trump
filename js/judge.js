@@ -75,6 +75,8 @@ function numchange(value){
         default:
             break;
     }
+    value = Number(value);
+    console.log(value)
     return value;
 }
 
