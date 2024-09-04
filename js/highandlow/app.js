@@ -9,15 +9,15 @@ let trump2 ="";
 
 async function start(){
     let display = document.getElementById("display");
-    //ボタンを作る
-    let reset = document.createElement("button");
-    //ボタンに名前
-    reset.innerHTML = "やめる";
-    //ボタンの動作
-    reset.setAttribute('onclick', 'reset()');
-    //idの付与
-    reset.id = 'reset'
-    display.appendChild(reset);
+    // //ボタンを作る
+    // let reset = document.createElement("button");
+    // //ボタンに名前
+    // reset.innerHTML = "やめる";
+    // //ボタンの動作
+    // reset.setAttribute('onclick', 'reset()');
+    // //idの付与
+    // reset.id = 'reset'
+    // display.appendChild(reset);
     let start = document.getElementById("start");
     display.removeChild(start)
     let response = await fetch(apiUrl);
@@ -68,6 +68,8 @@ async function next(){
     //画面遷移後の場合↓ 
     //let disp = document.getElementById("trump_table");
     
+    rest_display();
+
     disp.appendChild(next_card);
 }
 
@@ -79,15 +81,12 @@ async function rest_display(){
     let resthands = await resthand.json();
     console.log(resthands.remaining);
     console.log(resthands);
-    let num = document.createElement("p");
-    num.innerText = resthands.remaining;
-    num.id = "rest";
-    rest_id = document.getElementById("rest");
-    num.innerHTML = "";
-    num.innerText = resthands.remaining;
+    // let num = document.createElement("p");
+    rest_id.textContent = resthands.remaining;
     //残り枚数
     
    
-    rest_id.appendChild(num);
+    // rest_id.appendChild(rest);
+
 }
 
