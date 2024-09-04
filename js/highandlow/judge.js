@@ -12,6 +12,16 @@ function button_set(){
     low.innerHTML = "Low";
     low.setAttribute('onclick', 'low()');
     
+    //ボタンを作る
+    let reset = document.createElement("button");
+    //ボタンに名前
+    reset.innerHTML = "やめる";
+    //ボタンの動作
+    reset.setAttribute('onclick', 'reset()');
+    //idの付与
+    reset.id = 'reset'
+    display.appendChild(reset);
+
     display.appendChild(high);
     display.appendChild(low);
     //console.log(trump2)
@@ -34,6 +44,7 @@ function high(){
         lose();
     }else {
         console.log("ドロー");
+        draw()
     }
 }
 
@@ -54,6 +65,7 @@ function low(){
         lose();
     }else {
         console.log("ドロー");
+        draw()
     }
 }
 
@@ -83,9 +95,8 @@ function numchange(value){
 let result = document.getElementById("result");
 
 function win(){
-    let win_p = document.createElement("p");
-    win_p.textContent = "勝ち!!";
-    result.appendChild(win_p);
+    let result_id = document.getElementById("result");
+    result_id.textContent = "勝ち!!";
     let subject_img = document.getElementById("subject");
     subject_img.src = trump2.cards[1].image;
     trump2.cards[0] = trump2.cards[1];
@@ -94,15 +105,14 @@ function win(){
 }
 
 function lose(){
-    let lose_p = document.createElement("p");
-    lose_p.textContent = "負け!!";
-    result.appendChild(lose_p);
+    let result_id = document.getElementById("result");
+    result_id.textContent = "負け!!";
 }
 
 function draw(){
-    let draw_p = document.createElement("p");
-    draw_p.textContent = "負け!!";
-    result.appendChild(draw_p);
+    let result_id = document.getElementById("result");
+    result_id.textContent = "ドロー";
+    next();
 }
 
 function sleep(wait_time){
@@ -116,3 +126,4 @@ function sleep(wait_time){
         }
     },1000);
 }
+
