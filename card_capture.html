@@ -1,18 +1,30 @@
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>トランプ</title>
+        <link href="css/card_capture.css" rel="stylesheet">
     </head>
     <body>
+        <button id ="start" onclick ="start()">スタート</button>
         <div id ="display">
-            <button id ="start" onclick ="start()">スタート</button>
-            <div id ="trump_table"></div>
-            <div id ="rest_div">
-                <p id ="rest"></p>
+            <div id ="opponent">
+                <img id ="oppo_card_0">
+                <img id ="oppo_card_1">
+                <img id ="oppo_card_2">
+                <img id ="oppo_card_3">
+                <img id ="oppo_deck">
+                <img id ="oppo_capture">
             </div>
-            <div id ="result"></div>
-            <p id ="score">0</p>
+            <div id ="player">
+                <img id ="player_card_0">
+                <img id ="player_card_1">
+                <img id ="player_card_2">
+                <img id ="player_card_3">
+                <img id ="player_deck">
+                <img id ="player_capture">
+            </div>
         </div>
     </body>
-    <script src="js/card_capture/app.js"></script>
+    <script src="js/card_capture/start.js"></script>
 
 </html>
