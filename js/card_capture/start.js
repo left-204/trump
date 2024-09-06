@@ -1,7 +1,7 @@
 //ジョーカー入りのデッキurl
 let apiUrl = "https://www.deckofcardsapi.com/api/deck/new/?jokers_enabled=true";
 let shuffle_api = "";
-let hand_api = "";
+let player_deck_api = "";
 let apiUrl_draw = "";
 let return_api ="";
 
@@ -23,8 +23,8 @@ async function start(){
 
     //山札を分ける
     await divide();
-    //handの確認
-//    await hand();
+    //player_deckの確認
+//    await player_deck();
     //山札をシャッフルする
     await shuffle();
     
@@ -44,11 +44,11 @@ async function divide(){
     // console.log(deck.cards);
 
     //手札用の山札に分ける
-    hand_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/hand/add/?cards=2S,3S,4S,2D,3D,4D,2C,3C,4C,2H,3H,4H,X1,X2";
-    response = await fetch(hand_api);
+    player_deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/player_deck/add/?cards=2S,3S,4S,2D,3D,4D,2C,3C,4C,2H,3H,4H,X1,X2";
+    response = await fetch(player_deck_api);
     //jsの型に変換
     deck = await response.json();
-    player_card = deck.piles.hand;
+    player_card = deck.piles.player_deck;
     console.log("山札を分けました");
     console.log(player_card);
     console.log(deck);
@@ -74,6 +74,7 @@ async function divide(){
         }  
     }
     let deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/oppo_deck/add/?cards=" + card_code;
+                    https://www.deckofcardsapi.com/api/deck/<<deck_id>>/pile/<<pile_name>>/add/?cards=AS,2S
     response = await fetch(deck_api);
     //jsの型に変換
     deck = await response.json();
@@ -100,16 +101,15 @@ async function shuffle(){
     // console.log("シャッフルしました");
     // console.log(deck.piles.oppo_deck);
 
-    hand_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/hand/shuffle/"
-    response = await fetch(hand_api);
+    player_deck_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/player_deck/shuffle/"
+    response = await fetch(player_deck_api);
     //jsの型に変換
     deck = await response.json();
-    // console.log("handをシャッフルします");
+    // console.log("player_deckをシャッフルします");
     console.log(deck);
 }
-
+let card_id = "";
 async function set(){
-    let card_id = "";
     illust_exist = 0;
     for(let i = 0;i < 4;i++){
         await oppo_draw();
