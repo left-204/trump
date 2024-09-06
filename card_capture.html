@@ -8,35 +8,28 @@
         <button id ="start" onclick ="start()">スタート</button>
         <div id ="display">
             <div id ="opponent">
-            
                 <img id ="oppo_deck">
-            </label>
-                <input type ="radio">
-                <img id ="oppo_card_3">
-            </label>
-                <img id ="oppo_card_2">
-                <img id ="oppo_card_1">
-                <img id ="oppo_card_0">
+                <label><input type ="radio" name="oppo_card"><img id ="oppo_card_3"></label>
+                <label><input type ="radio" name="oppo_card"><img id ="oppo_card_2"></label>
+                <label><input type ="radio" name="oppo_card"><img id ="oppo_card_1"></label>
+                <label><input type ="radio" name="oppo_card"><img id ="oppo_card_0"></label>
                 <img id ="oppo_capture">
             </div>
             <div id ="player">
-            <label>
-                <input type ="checkbox">
-                <img id ="player_card_0">
-            </label>
-                <img id ="player_card_1">
-                <img id ="player_card_2">
-                <img id ="player_card_3">
+                <label><input type ="checkbox"><img id ="player_card_0"></label>
+                <label><input type ="checkbox"><img id ="player_card_1"></label>
+                <label><input type ="checkbox"><img id ="player_card_2"></label>
+                <label><input type ="checkbox"><img id ="player_card_3"></label>
                 <img id ="player_deck">
                 <img id ="player_capture">
             </div>
             <button onclick ="re_draw()">次へ</button>
-            <button id="captured">捕獲される</button>
-            <button id="capture">捕獲する</button>
-            <button id="sacrifice">生贄</button>
+            <button id="captured" onclick ="captured()">捕獲される</button>
+            <!--<button id="capture" onclick ="capture()">捕獲する</button> -->
+            <button id="sacrifice" onclick ="sacrifice()">生贄</button>
         </div>
     </body>
     <script src="js/card_capture/start.js"></script>
     <script src="js/card_capture/card.js"></script>
-
+    <script src="js/card_capture/capture.js"></script>
 </html>
