@@ -24,7 +24,7 @@ async function start(){
     //山札を分ける
     await divide();
     //handの確認
-    await hand();
+//    await hand();
     //山札をシャッフルする
     await shuffle();
     
@@ -82,14 +82,14 @@ async function divide(){
 
 }
 
-async function hand(){
-    let list_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/hand/list/";
-    response = await fetch(list_api);
-    let list = await response.json();
-    console.log("パイルのリストを引きます");
-    console.log(list.piles.hand.cards);
+// async function hand(){
+//     let list_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/hand/list/";
+//     response = await fetch(list_api);
+//     let list = await response.json();
+//     console.log("パイルのリストを引きます");
+//     console.log(list.piles.hand.cards);
 
-}
+// }
 
 async function shuffle(){
     //シャッフルする
