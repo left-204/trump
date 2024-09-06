@@ -77,8 +77,8 @@ async function divide(){
     response = await fetch(deck_api);
     //jsの型に変換
     deck = await response.json();
-    console.log(card_code);
-    console.log(deck);
+    //console.log(card_code);
+    //console.log(deck);
 
 }
 
@@ -97,15 +97,15 @@ async function shuffle(){
     response = await fetch(shuffle_api);
     //jsの型に変換
     deck = await response.json();
-    console.log("シャッフルしました");
-    console.log(deck.piles.oppo_deck);
+    // console.log("シャッフルしました");
+    // console.log(deck.piles.oppo_deck);
 
     hand_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/hand/shuffle/"
     response = await fetch(hand_api);
     //jsの型に変換
     deck = await response.json();
-    console.log("handをシャッフルします");
-    console.log(deck.piles.hand);
+    // console.log("handをシャッフルします");
+    console.log(deck);
 }
 
 async function set(){

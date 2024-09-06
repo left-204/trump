@@ -23,6 +23,15 @@ function illust_card_check() {
     }
 }
 
+function re_draw(){
+    for(let i = 0;i < 4;i++){
+        if(oppo_card[i].value >= 11){
+            
+        }
+    }
+}
+
+
 function numchange(value){
     // console.log(value);
         switch(value){
