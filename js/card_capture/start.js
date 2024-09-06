@@ -61,19 +61,14 @@ async function divide(){
     console.log("山札を分けました");
     console.log(deck.piles.hand);
 
+    console.log(deck);
     //手札以外のカードを山札に戻す
     return_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/return/"
     response = await fetch(return_api);
     //jsの型に変換
     deck = await response.json();
-    // console.log("山札を戻しました");
-
-    apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/draw/?count=54";
-    response = await fetch(apiUrl_draw);
-    //jsの型に変換
-    deck = await response.json();
+    console.log("山札を戻しました");
     console.log(deck.cards);
-
 }
 
 async function hand(){
@@ -96,9 +91,10 @@ async function set(){
     }
 
     for(let i = 0;i < 4;i++){ 
-        //await player_draw();
+        // await player_draw();
         card_id = document.getElementById("player_card_"+i);
         card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
+        // console.log(player_card.cards[0]);
     }
     card_id = document.getElementById("oppo_deck");
     card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
