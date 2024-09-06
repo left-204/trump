@@ -133,6 +133,7 @@ async function set(){
     //     card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
     //     // console.log(player_card.cards[0]);
     // }
+    
     card_id = document.getElementById("oppo_deck");
     card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
     
