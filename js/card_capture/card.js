@@ -8,7 +8,7 @@ async function oppo_draw(){
     // console.log("山札から引きます");
 }
 async function player_draw(){
-    apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/hand/draw/?count=1";
+    apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/player_deck/draw/?count=1";
     response = await fetch(apiUrl_draw);
     //jsの型に変換
     player_draw_card = await response.json();
@@ -29,14 +29,16 @@ async function re_draw(){
         if(oppo_card[i].value >= 11){
             console.log(oppo_card[i].code);
             let re_draw_code = oppo_card[i].code;
-            re_draw_api ="https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/oppo_deck/return/?cards=" + re_draw_code;
-            response = await fetch(apiUrl_draw);
+            re_draw_api ="https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/oppo_deck/add/?cards=" + re_draw_code;
+            response = await fetch(re_draw_api);
             //jsの型に変換
             oppo_draw_card = await response.json();
+            console.log(oppo_draw_card);
+            oppo_card[i] = null;
         }
     }
+    console.log(oppo_card);
 }
-
 
 function numchange(value){
     // console.log(value);
