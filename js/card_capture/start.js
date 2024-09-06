@@ -135,6 +135,7 @@ async function set(){
     // }
     card_id = document.getElementById("oppo_deck");
     card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
+    
     card_id = document.getElementById("player_deck");
     card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
 }
