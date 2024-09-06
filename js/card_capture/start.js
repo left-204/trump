@@ -87,7 +87,7 @@ async function set(){
         await oppo_draw();
         card_id = document.getElementById("oppo_card_"+i);
         card_id.src = oppo_card.cards[0].image;
-        console.log(oppo_card.cards[0]);
+        // console.log(oppo_card.cards[0]);
     }
 
     for(let i = 0;i < 4;i++){ 
@@ -104,6 +104,6 @@ async function set(){
     card_id = document.getElementById("oppo_capture");
     card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
     card_id = document.getElementById("player_capture");
-    card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
+    // card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
 }
 

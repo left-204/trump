@@ -5,8 +5,7 @@ async function oppo_draw(){
     response = await fetch(apiUrl_draw);
     //jsの型に変換
     oppo_card = await response.json();
-    console.log("山札から引きます");
-    console.log(oppo_card);
+    // console.log("山札から引きます");
 }
 // async function player_draw(){
 //     apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/hand/draw/?count=1";
