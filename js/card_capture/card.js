@@ -1,7 +1,7 @@
 let oppo_draw_card ="";
 let player_draw_card ="";
 async function oppo_draw(){
-    apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/oppo_deck/draw/?count=2";
+    apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/oppo_deck/draw/?count=1";
     response = await fetch(apiUrl_draw);
     //jsの型に変換
     oppo_draw_card = await response.json();
