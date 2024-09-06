@@ -16,13 +16,13 @@ async function start(){
     deck = await response.json();
     
     deck_id = deck.deck_id;
-    //山札をシャッフルする
-    await shuffle();
+
     //山札を分ける
     await divide();
     //handの確認
     await hand();
-
+    //山札をシャッフルする
+    await shuffle();
     await set();
 }
 
@@ -35,10 +35,17 @@ async function shuffle(){
     deck = await response.json();
     console.log("シャッフルしました");
     console.log(deck);
+
+    // hand_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/hand/shuffle/"
+    // response = await fetch(hand_api);
+    // //jsの型に変換
+    // deck = await response.json();
+    // console.log("handをシャッフルします");
+    // console.log(deck.piles.hand);
 }
 
 async function divide(){
-    //山を分けるために一回引く
+    // //山を分けるために一回引く
     apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/draw/?count=54";
     response = await fetch(apiUrl_draw);
     //jsの型に変換
@@ -53,31 +60,23 @@ async function divide(){
     deck = await response.json();
     console.log("山札を分けました");
     console.log(deck.piles.hand);
-    
-    hand_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/hand/shuffle/"
-    response = await fetch(hand_api);
-    //jsの型に変換
-    deck = await response.json();
-    console.log("handをシャッフルします");
-    console.log(deck.piles.hand);
 
     //手札以外のカードを山札に戻す
     return_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/return/"
     response = await fetch(return_api);
     //jsの型に変換
     deck = await response.json();
-    console.log("山札を戻しました");
-    console.log(deck);
-}
+    // console.log("山札を戻しました");
 
-async function hand(){
-
-    apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/draw/?count=40";
+    apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/draw/?count=54";
     response = await fetch(apiUrl_draw);
     //jsの型に変換
     deck = await response.json();
-    console.log("山札から引きます");
     console.log(deck.cards);
+
+}
+
+async function hand(){
 
     let list_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/hand/list/";
     response = await fetch(list_api);
@@ -89,11 +88,15 @@ async function hand(){
 
 async function set(){
     let card_id = "";
-    for(let i = 0;i < 4;i++){ 
+    for(let i = 0;i < 4;i++){
+        await oppo_draw();
         card_id = document.getElementById("oppo_card_"+i);
-        card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
+        card_id.src = oppo_card.cards[0].image;
+        console.log(oppo_card.cards[0]);
     }
+
     for(let i = 0;i < 4;i++){ 
+        //await player_draw();
         card_id = document.getElementById("player_card_"+i);
         card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
     }
@@ -106,5 +109,5 @@ async function set(){
     card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
     card_id = document.getElementById("player_capture");
     card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
-
 }
+
