@@ -23,8 +23,6 @@ async function start(){
 
     //山札を分ける
     await divide();
-    //player_deckの確認
-//    await player_deck();
     //山札をシャッフルする
     await shuffle();
     

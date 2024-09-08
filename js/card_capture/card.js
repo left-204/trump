@@ -25,10 +25,9 @@ function illust_card_check() {
 let re_draw_api = "";
 let re_draw_code = "";
 async function re_draw(){
-    let fill = 1;
+    let null_count = 0;
     for(let i = 0;i < 4;i++){
         if(oppo_card[i].value >= 11){
-            fill = 0;
             console.log(oppo_card[i].code);
             let re_draw_code = oppo_card[i].code;
             re_draw_api ="https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/oppo_deck/add/?cards=" + re_draw_code;
@@ -37,17 +36,35 @@ async function re_draw(){
             oppo_draw_card = await response.json();
             console.log(oppo_draw_card);
             oppo_card[i] = null;
+            null_count += 1;
         }
     }
     console.log(oppo_card);
-
-    while(fill == 0){
+    console.log(null_count);
+    let fill = 0;
+    let count = 0;
+    while(count != 2){
         for(let i = 1;i < 4;i++){
-            
+            if(oppo_card[i - 1] == null){
+            oppo_card[i-1] = oppo_card[i];
+            oppo_card[i] = null;
+            }
+            console.log(oppo_card);
         }
+        count += 1;
 
-        fill = 1;
+        for(let i = 3;i >= null_count;i--){
+            if(oppo_card[i] == null){
+                console.log(oppo_card[i]);
+            }
+        }
+        // }
+        // if(null_count == count){
+        //     fill = 1;
+        // }
+        // fill = 0;
     }
+    console.log(oppo_card);
 
 
 }
