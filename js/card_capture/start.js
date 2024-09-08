@@ -74,7 +74,6 @@ async function divide(){
         }  
     }
     let deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/oppo_deck/add/?cards=" + card_code;
-                    https://www.deckofcardsapi.com/api/deck/<<deck_id>>/pile/<<pile_name>>/add/?cards=AS,2S
     response = await fetch(deck_api);
     //jsの型に変換
     deck = await response.json();
@@ -140,4 +139,6 @@ async function set(){
     card_id = document.getElementById("player_deck");
     card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
 }
-
+async function oppo_set() {
+    
+}
