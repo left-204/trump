@@ -34,39 +34,12 @@ async function re_draw(){
             response = await fetch(re_draw_api);
             //jsの型に変換
             oppo_draw_card = await response.json();
-            console.log(oppo_draw_card);
+            //console.log(oppo_draw_card);
             oppo_card[i] = null;
             null_count += 1;
         }
     }
     console.log(oppo_card);
-    console.log(null_count);
-    let fill = 0;
-    let count = 0;
-    while(count != 2){
-        for(let i = 1;i < 4;i++){
-            if(oppo_card[i - 1] == null){
-            oppo_card[i-1] = oppo_card[i];
-            oppo_card[i] = null;
-            }
-            console.log(oppo_card);
-        }
-        count += 1;
-
-        for(let i = 3;i >= null_count;i--){
-            if(oppo_card[i] == null){
-                console.log(oppo_card[i]);
-            }
-        }
-        // }
-        // if(null_count == count){
-        //     fill = 1;
-        // }
-        // fill = 0;
-    }
-    console.log(oppo_card);
-
-
 }
 
 function numchange(value){

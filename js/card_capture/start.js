@@ -12,6 +12,8 @@ let deck = "";
 let oppo_card = [4];
 let player_card =[4];
 let illust_exist = 0;
+let player_deck ="";
+
 
 async function start(){
     //デッキ生成
@@ -45,24 +47,8 @@ async function divide(){
     player_deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/player_deck/add/?cards=2S,3S,4S,2D,3D,4D,2C,3C,4C,2H,3H,4H,X1,X2";
     response = await fetch(player_deck_api);
     //jsの型に変換
-    deck = await response.json();
-    player_card = deck.piles.player_deck;
-    console.log("山札を分けました");
-    console.log(player_card);
-    console.log(deck);
-
-    //手札以外のカードを山札に戻す
-    return_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/return/"
-    response = await fetch(return_api);
-    //jsの型に変換
-    deck = await response.json();
-    console.log("山札を戻しました");
-    console.log(deck);
-
-    apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/draw/?count=54";
-    response = await fetch(apiUrl_draw);
-    //jsの型に変換
-    deck = await response.json();
+    player_deck = await response.json();
+    player_card = player_deck.piles.player_deck;
     let card_code ="";
     for(let i = 0;i < 40;i++){
         if(i != 0){
@@ -80,14 +66,6 @@ async function divide(){
 
 }
 
-// async function hand(){
-//     let list_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/hand/list/";
-//     response = await fetch(list_api);
-//     let list = await response.json();
-//     console.log("パイルのリストを引きます");
-//     console.log(list.piles.hand.cards);
-
-// }
 
 async function shuffle(){
     //シャッフルする
