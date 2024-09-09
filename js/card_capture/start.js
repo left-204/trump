@@ -13,6 +13,7 @@ let oppo_card = [4];
 let player_card =[4];
 let illust_exist = 0;
 let player_deck ="";
+let start_hand_symbol =["2S","3S","4S","2D","3D","4D","2C","3C","4C","2H","3H","4H","X1","X2"];
 
 
 async function start(){
@@ -40,9 +41,7 @@ async function divide(){
     response = await fetch(apiUrl_draw);
     //jsの型に変換
     deck = await response.json();
-    // console.log("一旦引きます");
-    // console.log(deck.cards);
-
+ 
     //手札用の山札に分ける
     player_deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/player_deck/add/?cards=2S,3S,4S,2D,3D,4D,2C,3C,4C,2H,3H,4H,X1,X2";
     response = await fetch(player_deck_api);
@@ -50,19 +49,21 @@ async function divide(){
     player_deck = await response.json();
     player_card = player_deck.piles.player_deck;
     let card_code ="";
-    for(let i = 0;i < 40;i++){
-        if(i != 0){
-            card_code = card_code + "," +deck.cards[i].code;
+    for(let i = 0;i < 54;i++){
+        if(start_hand_symbol.includes(deck.cards[i].code)){
+            
         }else {
-            card_code = deck.cards[i].code;
-        }  
+            if(i != 0){
+                card_code = card_code + "," + deck.cards[i].code;
+            }else {
+                card_code = deck.cards[i].code;
+            }
+        }
     }
     let deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/oppo_deck/add/?cards=" + card_code;
     response = await fetch(deck_api);
     //jsの型に変換
     deck = await response.json();
-    //console.log(card_code);
-    //console.log(deck);
 
 }
 
@@ -73,16 +74,13 @@ async function shuffle(){
     response = await fetch(shuffle_api);
     //jsの型に変換
     deck = await response.json();
-    // console.log("シャッフルしました");
-    // console.log(deck.piles.oppo_deck);
 
     player_deck_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/player_deck/shuffle/"
     response = await fetch(player_deck_api);
     //jsの型に変換
     deck = await response.json();
-    // console.log("player_deckをシャッフルします");
-    console.log(deck);
 }
+
 let card_id = "";
 async function set(){
     illust_exist = 0;
@@ -93,7 +91,8 @@ async function set(){
         oppo_card[i] = oppo_draw_card.cards[0];
         oppo_card[i].value = numchange(oppo_card[i].value);
     }
-
+    console.log("敵手札")
+    console.log(oppo_card);
 
     for(let i = 0;i < 4;i++){
         await player_draw();  
@@ -116,5 +115,9 @@ async function set(){
     card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
 }
 async function oppo_set() {
-    
+    for(let i = 0;i < 4;i++){
+        await oppo_draw();
+        card_id = document.getElementById("oppo_card_"+i);
+        card_id.src = oppo_card[i].image;
+    }
 }
