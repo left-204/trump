@@ -11,6 +11,7 @@ let deck = "";
 
 let oppo_card = [4];
 let player_card =[4];
+let player_checkbox = [4];
 let illust_exist = 0;
 let player_deck ="";
 let start_hand_symbol =["2S","3S","4S","2D","3D","4D","2C","3C","4C","2H","3H","4H","X1","X2"];
@@ -100,6 +101,10 @@ async function set(){
         card_id.src = player_draw_card.cards[0].image;
         player_card[i] = player_draw_card.cards[0];
         player_card[i].value = numchange(player_card[i].value);
+    }
+    
+    for(let i = 0;i < 4;i++){
+        player_checkbox.push(document.getElementById("player_card_"+ i +"_box"));
     }
     // for(let i = 0;i < 4;i++){ 
     //     // await player_draw();

@@ -97,13 +97,9 @@ async function fill_in(){
         }
     }
 }
-let player_checkbox = [];
 //捨てたい札を選択
 let player_hands = [4];
 function discard() {
-    for(let i = 0;i < 4;i++){
-        player_checkbox.push(document.getElementById("player_card_"+ i +"_box"));
-    }
     for(let i = 0;i < 4;i++){
         if(player_checkbox[i].checked){
             player_hands[i] = true;
