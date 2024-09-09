@@ -97,11 +97,7 @@ async function fill_in(){
         }
     }
 }
-let player_checkbox = [];
 function check() {
-    for(let i = 0;i < 4;i++){
-        player_checkbox.push(document.getElementById("player_card_"+ i +"_box"));
-    }
     for(let i = 0;i < 4;i++){
         if(player_checkbox[i].checked){
             console.log(player_card[i]);
