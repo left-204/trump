@@ -97,7 +97,6 @@ async function fill_in(){
         }
     }
 }
-
 let player_checkbox = [];
 function check() {
     for(let i = 0;i < 4;i++){
