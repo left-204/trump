@@ -32,21 +32,12 @@ async function re_draw(){
     for(let i = 0;i < 4;i++){
         if(oppo_card[i].value >= 11){
             console.log(oppo_card[i].code);
-            // let re_draw_code = oppo_card[i].code;
-            //山札に絵柄カードを返す
-            // re_draw_api ="https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/oppo_deck/add/?cards=" + re_draw_code;
-            // response = await fetch(re_draw_api);
-            // //jsの型に変換
-            // oppo_draw_card = await response.json();
             oppo_deck_history.push(oppo_card[i]);
             console.log(oppo_draw_card);
             oppo_card[i] = null;
             null_count += 1;
         }
     }
-
-    console.log(oppo_card);
-    console.log(null_count);
     right_just(oppo_card,null_count);
     await fill_in();
     oppo_set();
@@ -76,30 +67,25 @@ function numchange(value){
 
 function right_just(oppo_card,null_count){
     let number_card = 4 - null_count;
-    let number_count = 0;
     let fill = 0;
     let count = 0;
     do{
         count = 0;
-        number_count = 0;
         for(let i = 1;i < 4;i++){
             if(oppo_card[i-1] == null||oppo_card[i-1] == undefined){
                 oppo_card[i-1] = oppo_card[i];
                 oppo_card[i] = null;
             }
         }
-        for(let i = 0;i < number_card - 1;i++){
+        for(let i = 0;i < number_card;i++){
             if(oppo_card[i] != null){
-                number_count += 1;
+                count += 1;
             }
         }
-        if(number_count == number_card){
+        if(number_card == count){
             fill = 1;
         }
-        console.log(oppo_card);
     }while(fill == 0)
-    console.log("右詰め");
-    console.log(oppo_card);
     
 }
 
@@ -110,5 +96,17 @@ async function fill_in(){
             oppo_card[i] = oppo_draw_card.cards[0];
         }
     }
-    console.log(oppo_card);
 }
+let player_checkbox = [];
+function check() {
+    for(let i = 0;i < 4;i++){
+        player_checkbox.push(document.getElementById("player_card_"+ i +"_box"));
+    }
+    for(let i = 0;i < 4;i++){
+        if(player_checkbox[i].checked){
+            console.log(player_card[i]);
+        }else{
+            console.log("bbbb");
+        }
+    }
+  }
