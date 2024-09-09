@@ -43,7 +43,8 @@ async function re_draw(){
     console.log(null_count);
     let fill = 0;
     let count = 0;
-    while(count != 2){
+    while(count != 1){
+        count = 0;
         for(let i = 1;i < 4;i++){
             if(oppo_card[i - 1] == null){
             oppo_card[i-1] = oppo_card[i];
@@ -51,18 +52,24 @@ async function re_draw(){
             }
             console.log(oppo_card);
         }
-        count += 1;
 
         for(let i = 3;i >= null_count;i--){
             if(oppo_card[i] == null){
                 console.log(oppo_card[i]);
+                count += 1;
             }
         }
-        // }
-        // if(null_count == count){
-        //     fill = 1;
-        // }
-        // fill = 0;
+        console.log("null個数"+null_count);
+        console.log("nullカウント"+count);
+        if(null_count == count){
+            fill = 1;
+        }
+    }
+    for(let i = 3;i < null_count;i--){
+        e_draw_api ="https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/oppo_deck/add/?cards=" + re_draw_code;
+        response = await fetch(re_draw_api);
+        //jsの型に変換
+        oppo_draw_card = await response.json();
     }
     console.log(oppo_card);
 }
