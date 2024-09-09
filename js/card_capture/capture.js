@@ -1,65 +1,20 @@
-
-function check() {
-    for(let i = 0;i < 4;i++){
-        player_checkbox.push(document.getElementById("player_card_"+ i +"_box"));
-    }
+let oppo_hands = [4];
+function capture(){
     for(let i = 0;i < 4;i++){
         if(player_checkbox[i].checked){
-            console.log(player_card[i]);
+            player_hands[i] = true;
+            // console.log(player_card[i]);
         }else{
-            console.log("bbbb");
+            player_hands[i] = false;
+        }
+        if(oppo_checkbox[i].checked){
+            oppo_hands[i] = true;
+            // console.log(player_card[i]);
+        }else{
+            oppo_hands[i] = false;
         }
     }
-  }
-function capture() {
-    let player_card_0 = document.getElementById("player_card_0_box");
-    let player_card_1 = document.getElementById("player_card_1_box");
-    let player_card_2 = document.getElementById("player_card_2_box");
-    let player_card_3 = document.getElementById("player_card_3_box");
-    let oppo_card_0 = document.getElementById("oppo_card_0_box");
-    let oppo_card_1 = document.getElementById("oppo_card_1_box");
-    let oppo_card_2 = document.getElementById("oppo_card_2_box");
-    let oppo_card_3 = document.getElementById("oppo_card_3_box");
-    if(player_card_0.checked){
-        console.log(player_card[0].code);
-    }else{
-        console.log("チェックされてないよ");
-    }
-    if(player_card_1.checked){
-        console.log(player_card[1].code);
-    }else{
-        console.log("チェックされてないよ");
-    }
-    if(player_card_2.checked){
-        console.log(player_card[2].code);
-    }else{
-        console.log("チェックされてないよ");
-    }
-    if(player_card_3.checked){
-        console.log(player_card[3].code);
-    }else{
-        console.log("チェックされてないよ");
-    }
+    console.log(oppo_hands);
+    console.log(player_hands);
     
-    console.log("敵側");
-    if(oppo_card_0.checked){
-        console.log(oppo_card[0].code);
-    }else{
-        console.log("チェックされてないよ");
-    }
-    if(oppo_card_1.checked){
-        console.log(oppo_card[1].code);
-    }else{
-        console.log("チェックされてないよ");
-    }
-    if(oppo_card_2.checked){
-        console.log(oppo_card[2].code);
-    }else{
-        console.log("チェックされてないよ");
-    }
-    if(oppo_card_3.checked){
-        console.log(oppo_card[3].code);
-    }else{
-        console.log("チェックされてないよ");
-    }
-  }
+}
