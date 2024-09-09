@@ -98,15 +98,22 @@ async function fill_in(){
     }
 }
 let player_checkbox = [];
-function check() {
+//捨てたい札を選択
+let player_hands = [4];
+function discard() {
     for(let i = 0;i < 4;i++){
         player_checkbox.push(document.getElementById("player_card_"+ i +"_box"));
     }
     for(let i = 0;i < 4;i++){
         if(player_checkbox[i].checked){
+            player_hands[i] = true;
             console.log(player_card[i]);
         }else{
+            player_hands[i] = false;
             console.log("bbbb");
         }
     }
+    console.log(player_hands);
+    //捨て山にtrueのカードを移動
+    
   }
