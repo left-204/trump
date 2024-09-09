@@ -47,9 +47,6 @@ async function divide(){
     response = await fetch(player_deck_api);
     //jsの型に変換
     player_deck = await response.json();
-
-    console.log("確認");
-    console.log(player_deck);
     player_card = player_deck.piles.player_deck;
     let card_code ="";
     for(let i = 0;i < 54;i++){
@@ -68,19 +65,6 @@ async function divide(){
     //jsの型に変換
     deck = await response.json();
 
-    let list_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/oppo_deck/list/";
-    response = await fetch(list_api);
-    //jsの型に変換
-    deck = await response.json();
-    console.log("敵デッキ");
-    console.log(deck);
-
-    list_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/player_deck/list/";
-    response = await fetch(list_api);
-    //jsの型に変換
-    deck = await response.json();
-    console.log("プレイヤーデッキ");
-    console.log(deck);
 }
 
 
@@ -90,16 +74,13 @@ async function shuffle(){
     response = await fetch(shuffle_api);
     //jsの型に変換
     deck = await response.json();
-    // console.log("シャッフルしました");
-    // console.log(deck.piles.oppo_deck);
 
     player_deck_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/player_deck/shuffle/"
     response = await fetch(player_deck_api);
     //jsの型に変換
     deck = await response.json();
-    // console.log("player_deckをシャッフルします");
-    console.log(deck);
 }
+
 let card_id = "";
 async function set(){
     illust_exist = 0;
@@ -110,7 +91,8 @@ async function set(){
         oppo_card[i] = oppo_draw_card.cards[0];
         oppo_card[i].value = numchange(oppo_card[i].value);
     }
-
+    console.log("敵手札")
+    console.log(oppo_card);
 
     for(let i = 0;i < 4;i++){
         await player_draw();  
@@ -133,5 +115,9 @@ async function set(){
     card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
 }
 async function oppo_set() {
-    
+    for(let i = 0;i < 4;i++){
+        await oppo_draw();
+        card_id = document.getElementById("oppo_card_"+i);
+        card_id.src = oppo_card[i].image;
+    }
 }

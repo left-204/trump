@@ -16,12 +16,13 @@
                 <img id ="oppo_capture">
             </div>
             <div id ="player">
-                <label><input type ="checkbox"><img id ="player_card_0"></label>
-                <label><input type ="checkbox"><img id ="player_card_1"></label>
-                <label><input type ="checkbox"><img id ="player_card_2"></label>
-                <label><input type ="checkbox"><img id ="player_card_3"></label>
-                <img id ="player_deck">
-                <img id ="player_capture">
+                    <label><input type ="checkbox" id ="player_card_0_box"><img id ="player_card_0"></label>
+                    <label><input type ="checkbox" id ="player_card_1_box"><img id ="player_card_1"></label>
+                    <label><input type ="checkbox" id ="player_card_2_box"><img id ="player_card_2"></label>
+                    <label><input type ="checkbox" id ="player_card_3_box"><img id ="player_card_3"></label>
+                    <img id ="player_deck">
+                    <img id ="player_capture">
+                <button onclick="check()">チェック確認</button>
             </div>
             <button onclick ="re_draw()">次へ</button>
             <button id="captured" onclick ="captured()">捕獲される</button>
