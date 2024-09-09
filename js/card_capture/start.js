@@ -104,7 +104,7 @@ async function set(){
     }
     
     for(let i = 0;i < 4;i++){
-        player_checkbox.push(document.getElementById("player_card_"+ i +"_box"));
+        player_checkbox[i] = document.getElementById("player_card_"+ i +"_box");
     }
     // for(let i = 0;i < 4;i++){ 
     //     // await player_draw();
