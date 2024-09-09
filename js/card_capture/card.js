@@ -112,18 +112,3 @@ async function fill_in(){
     }
     console.log(oppo_card);
 }
-
-function check() {
-    let player_card_0 = document.getElementById("player_card_0_box");
-    let player_card_1 = document.getElementById("player_card_1_box");
-    let player_card_2 = document.getElementById("player_card_2_box");
-    let player_card_3 = document.getElementById("player_card_3_box");
-    if(player_card_0.checked){
-        console.log(player_card[0]);
-    }else{
-        console.log("bbbb");
-    }
-    console.log(player_card_1)
-    console.log(player_card_2)
-    console.log(player_card_3)
-  }
