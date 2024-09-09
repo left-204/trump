@@ -97,8 +97,6 @@ async function fill_in(){
         }
     }
 }
-
-let player_checkbox = [];
 //捨てたい札を選択
 let player_hands = [4];
 function discard() {
