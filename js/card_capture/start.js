@@ -107,13 +107,6 @@ async function set(){
     for(let i = 0;i < 4;i++){
         player_checkbox.push(document.getElementById("player_card_"+ i +"_box"));
     }
-   
-    // for(let i = 0;i < 4;i++){ 
-    //     // await player_draw();
-    //     card_id = document.getElementById("player_card_"+i);
-    //     card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
-    //     // console.log(player_card.cards[0]);
-    // }
     
     card_id = document.getElementById("oppo_deck");
     card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
@@ -121,6 +114,7 @@ async function set(){
     card_id = document.getElementById("player_deck");
     card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
 }
+
 async function oppo_set() {
     for(let i = 0;i < 4;i++){
         await oppo_draw();
