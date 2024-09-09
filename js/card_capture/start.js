@@ -10,6 +10,7 @@ let response = "";
 let deck = "";
 
 let oppo_card = [4];
+let oppo_checkbox = [4];
 let player_card =[4];
 let player_checkbox = [4];
 let illust_exist = 0;
@@ -105,6 +106,8 @@ async function set(){
     
     for(let i = 0;i < 4;i++){
         player_checkbox[i] = document.getElementById("player_card_"+ i +"_box");
+        oppo_checkbox[i] = document.getElementById("oppo_card_"+ i +"_box");
+
     }
     // for(let i = 0;i < 4;i++){ 
     //     // await player_draw();
