@@ -26,7 +26,7 @@ async function capture(){
         if(player_hands[i] == true){
             checked_player.push(player_card[i]);
             if(player_card[i].suit == "BLACK" || player_card[i].suit == "RED"){
-                joker_exist = 1;
+                joker_exist += 1;
             }
         }   
         if(oppo_hands[i] == true){
@@ -74,6 +74,17 @@ async function capture_execute(){
     player_hand_fill();
     checked_reset();
 }
+let select_card = [];
+let joker_hands = [];
 function joker_execute(){
-    
+    for(let i = 0;i < 3;i++){
+        select_card[i] = document.getElementById("select_card_" + i);
+    }
+    for(let i = 0;i < 4;i++){
+        if(player_hands[i] == true){
+            if(player_card[i].suit == "BLACK" || player_card[i].suit == "RED"){
+                joker_hands[i] = true;
+            }
+        }
+    }
 }
