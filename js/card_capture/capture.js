@@ -74,17 +74,35 @@ async function capture_execute(){
     player_hand_fill();
     checked_reset();
 }
-let select_card = [];
+let select_card_id = [];
 let joker_hands = [];
+let select_card = [];
 function joker_execute(){
     for(let i = 0;i < 3;i++){
-        select_card[i] = document.getElementById("select_card_" + i);
+        select_card_id[i] = document.getElementById("select_card_" + i);
+        console.log(select_card_id[i])
     }
     for(let i = 0;i < 4;i++){
         if(player_hands[i] == true){
             if(player_card[i].suit == "BLACK" || player_card[i].suit == "RED"){
                 joker_hands[i] = true;
+            }else{
+                joker_hands[i] = false;
             }
         }
     }
+    console.log(player_hands);
+    console.log(joker_hands);
+    for(let i = 0;i < 4;i++){
+        if(joker_hands[i] == false){
+            select_card.push(player_card[i]);
+        }
+    }
+    console.log(select_card);
+    console.log(select_card.length);
+    for(let i = 0;i < select_card.length;i++){
+        select_card_id[i].src = select_card[i].image;
+    }
+
+
 }
