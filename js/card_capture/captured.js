@@ -54,4 +54,7 @@ async function captured() {
     for(let i = 0 ; i<4; i ++){
         oppo_checkbox[i].checked = false;
     }
+    for(let i = 0 ; i<4; i ++){
+        player_checkbox[i].checked = false;
+    }
   }
