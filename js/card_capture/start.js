@@ -29,8 +29,8 @@ async function start(){
     //山札を分ける
     await divide();
     //山札をシャッフルする
-    await shuffle();
-    
+    await oppo_shuffle();
+    await player_shuffle();
     await set();
     
     illust_card_check();
@@ -75,13 +75,15 @@ async function divide(){
 }
 
 
-async function shuffle(){
+async function oppo_shuffle(){
     //シャッフルする
     shuffle_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/oppo_deck/shuffle/";
     response = await fetch(shuffle_api);
     //jsの型に変換
     deck = await response.json();
+}
 
+async function player_shuffle() {
     player_deck_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/player_deck/shuffle/"
     response = await fetch(player_deck_api);
     //jsの型に変換
