@@ -11,6 +11,7 @@ body{
    background-position: center center;
 }
 
+/* CheckBoxとラジオボタンの透化 */
 input[type=radio]{
     display: none;
 }
@@ -25,17 +26,33 @@ img {
     height: auto;
 }
 
-.button_position{
+/* Startボタンの位置 */
+.start{
+    margin : 20px 0;
     text-align: center;
-    margin-right: 100px;
-    /* position: absolute; */
 }
 
+.start_move{
+    width: 120px;
+    height: 60px;
+}
+
+.button_position{
+    text-align: center;
+    margin : 0 30px;
+}
+
+/* 敵＆自分カード全体div囲み */
 .ALL_Card{
     text-align: center;
 }
 
 /* 敵捨札用 */
 .oppo_capture{
+    margin-left : 30px;
     transform: rotate(90deg);
+}
+
+.Enemy_Card{
+    margin-left: 30px;
 }
