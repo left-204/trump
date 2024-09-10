@@ -14,15 +14,7 @@ async function captured() {
             console.log("チェックされてないよ");
         }
     }   
-    for(let i = 0; i < 4; i++){
-        if(player_card[i] == null){
-        await player_draw();  
-        card_id = document.getElementById("player_card_"+i);
-        card_id.src = player_draw_card.cards[0].image;
-        player_card[i] = player_draw_card.cards[0];
-        player_card[i].value = numchange(player_card[i].value);
-        }
-    }
+    await player_hand_fill();
     //console.log(player_checkbox);
     
     console.log("敵側");
