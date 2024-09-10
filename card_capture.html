@@ -7,10 +7,12 @@
 </head>
 
 <body>
-    <button id="start" onclick="start()">スタート</button>
+    <div class = "start">
+    <button class = "start_move" id="start" onclick="start()">スタート</button>
+    </div>
     <div class="ALL_Card">
         <div id="display">
-            <div id="opponent">
+            <div class = "Enemy_Card"; id="opponent">
                 <img id="oppo_deck">
                 <label><input type="radio" name="oppo_card" id="oppo_card_3_box"><img id="oppo_card_3"></label>
                 <label><input type="radio" name="oppo_card" id="oppo_card_2_box"><img id="oppo_card_2"></label>
@@ -27,11 +29,11 @@
                 <img id="player_capture">
             </div>
         </div>
-        <button class = "button_position" onclick="discard()">捨てる</button>
-        <button class = "button_position" onclick="re_draw()">次へ</button>
-        <button class = "button_position" id="captured" onclick="captured()">捕獲される</button>
-        <button class = "button_position" id="capture" onclick="capture()">捕獲する</button>
-        <button class = "button_position" id="sacrifice" onclick="sacrifice()">生贄</button>
+        <button class="button_position" onclick="discard()">捨てる</button>
+        <button class="button_position" onclick="re_draw()">次へ</button>
+        <button class="button_position" id="captured" onclick="captured()">捕獲される</button>
+        <button class="button_position" id="capture" onclick="capture()">捕獲する</button>
+        <button class="button_position" id="sacrifice" onclick="sacrifice()">生贄</button>
     </div>
 
     <div>
@@ -40,11 +42,11 @@
         <button id = "select_card_2"></button>
     </div>
 </body>
-  <script src="js/card_capture/start.js"></script>
-  <script src="js/card_capture/card.js"></script>
-  <script src="js/card_capture/capture.js"></script>
-  <script src="js/card_capture/captured.js"></script>
-  <script src="js/card_capture/dis_card.js"></script>
+<script src="js/card_capture/start.js"></script>
+<script src="js/card_capture/card.js"></script>
+<script src="js/card_capture/capture.js"></script>
+<script src="js/card_capture/captured.js"></script>
+<script src="js/card_capture/dis_card.js"></script>
 <script src="js/card_capture/sacrifice.js"></script>
-</html>
 
+</html>
