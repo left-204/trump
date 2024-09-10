@@ -98,3 +98,14 @@ async function fill_in(){
     }
 }
 
+async function player_hand_fill(){
+    for(let i = 0; i < 4; i++){
+        if(player_card[i] == null){
+        await player_draw();  
+        card_id = document.getElementById("player_card_"+i);
+        card_id.src = player_draw_card.cards[0].image;
+        player_card[i] = player_draw_card.cards[0];
+        player_card[i].value = numchange(player_card[i].value);
+        }
+    }
+}

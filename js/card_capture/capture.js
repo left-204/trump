@@ -14,7 +14,6 @@ function capture(){
             oppo_hands[i] = false;
         }
     }
-    console.log(oppo_hands);
-    console.log(player_hands);
+    
     
 }
