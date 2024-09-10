@@ -18,7 +18,8 @@ async function player_draw(){
     player_draw_card = await response.json();
     console.log(player_draw_card);
     if(player_draw_card.success == false){
-        await player_capture_reset()
+        await player_capture_reset();
+        await player_shuffle();
         apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/player_deck/draw/?count=1";
     response = await fetch(apiUrl_draw);
     console.log(response);

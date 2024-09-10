@@ -31,6 +31,7 @@ async function start(){
     //山札をシャッフルする
     await oppo_shuffle();
     await player_shuffle();
+    
     await set();
     
     illust_card_check();
