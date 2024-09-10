@@ -7,12 +7,15 @@ async function oppo_draw(){
     //jsの型に変換
     oppo_draw_card = await response.json();
     // console.log("山札から引きます");
+    oppo_draw_card.cards[0].value = numchange(oppo_draw_card.cards[0].value)
+    console.log(oppo_draw_card.cards[0].value);
 }
 async function player_draw(){
     apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/player_deck/draw/?count=1";
     response = await fetch(apiUrl_draw);
     //jsの型に変換
     player_draw_card = await response.json();
+    player_draw_card.cards[0].value = numchange(player_draw_card.cards[0].value)
     console.log("手札を引きます");
 }
 
@@ -38,6 +41,7 @@ async function re_draw(){
             null_count += 1;
         }
     }
+    console.log(oppo_card);
     right_just(oppo_card,null_count);
     await fill_in();
     oppo_set();
@@ -101,11 +105,18 @@ async function fill_in(){
 async function player_hand_fill(){
     for(let i = 0; i < 4; i++){
         if(player_card[i] == null){
-        await player_draw();  
-        card_id = document.getElementById("player_card_"+i);
-        card_id.src = player_draw_card.cards[0].image;
-        player_card[i] = player_draw_card.cards[0];
-        player_card[i].value = numchange(player_card[i].value);
+            await player_draw();  
+            card_id = document.getElementById("player_card_"+i);
+            card_id.src = player_draw_card.cards[0].image;
+            player_card[i] = player_draw_card.cards[0];
+            player_card[i].value = numchange(player_card[i].value);
         }
+    }
+}
+
+function checked_reset(){
+    for(let i = 0 ; i<4; i ++){
+        oppo_checkbox[i].checked = false;
+        player_checkbox[i].checked = false;
     }
 }
