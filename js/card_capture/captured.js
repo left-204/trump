@@ -51,10 +51,5 @@ async function captured() {
     await fill_in()
     oppo_set()
 
-    for(let i = 0 ; i<4; i ++){
-        oppo_checkbox[i].checked = false;
-    }
-    for(let i = 0 ; i<4; i ++){
-        player_checkbox[i].checked = false;
-    }
+    checked_reset();
   }

@@ -35,6 +35,7 @@ async function start(){
     
     illust_card_check();
     console.log(illust_exist);
+    checked_reset();
 }
 
 async function divide(){
