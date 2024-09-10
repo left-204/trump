@@ -1,8 +1,41 @@
 @charset "UTF-8";
-html , body{
+html{
     min-width: 100%;
 }
+
+body{
+    /* min-width: 100%; */
+   background-image: url("../images/Roto.jpg");
+   background-size: cover;
+   background-attachment: fixed;
+   background-position: center center;
+}
+
+input[type=radio]{
+    display: none;
+}
+
+input[type=CheckBox]{
+    display: none;
+}
+
+/* 全体image用 */
 img {
-    width: 100px;
+    width: 150px;
     height: auto;
+}
+
+.button_position{
+    text-align: center;
+    margin-right: 100px;
+    /* position: absolute; */
+}
+
+.ALL_Card{
+    text-align: center;
+}
+
+/* 敵捨札用 */
+.oppo_capture{
+    transform: rotate(90deg);
 }

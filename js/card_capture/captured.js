@@ -22,6 +22,8 @@ async function captured() {
         console.log(oppo_card[0].code);
         oppo_capture.push(oppo_card[0]);
         oppo_card[0] = null;
+        card_id = document.getElementById("oppo_capture");
+        card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
     }else{
         console.log("一番右のカードを選択してね");
     }
