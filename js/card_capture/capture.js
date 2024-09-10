@@ -1,8 +1,11 @@
 let oppo_hands = [4];
 let checked_oppo = "";
+let joker_exist = 0;
+let checked_player = [];
+let checked_player_value = 0;
 async function capture(){
-    let checked_player = [];
-    let checked_player_value = 0;
+    checked_player = [];
+    checked_player_value = 0;
     //選択された場所をtrueにする
     for(let i = 0;i < 4;i++){
         if(player_checkbox[i].checked){
@@ -18,12 +21,13 @@ async function capture(){
             oppo_hands[i] = false;
         }
     }
-    console.log(oppo_hands)
-    console.log(player_hands)
-    //
+    joker_exist = 0;
     for(let i = 0;i < 4;i++){
         if(player_hands[i] == true){
             checked_player.push(player_card[i]);
+            if(player_card[i].suit == "BLACK" || player_card[i].suit == "RED"){
+                joker_exist = 1;
+            }
         }   
         if(oppo_hands[i] == true){
             checked_oppo = oppo_card[i]; 
@@ -31,6 +35,13 @@ async function capture(){
     }
     console.log(checked_player)
     console.log(checked_oppo)
+    if(joker_exist == 0){
+        capture_execute();
+    }else {
+        joker_execute();
+    }
+}
+async function capture_execute(){
     if(checked_oppo.suit == checked_player[0].suit){        
         for(let i = 0;i < checked_player.length;i++){
             if(checked_oppo.suit == checked_player[i].suit){
@@ -61,6 +72,8 @@ async function capture(){
     await fill_in();
     oppo_set();
     player_hand_fill();
-    console.log(player_capture)
     checked_reset();
+}
+function joker_execute(){
+    
 }

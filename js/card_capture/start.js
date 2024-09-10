@@ -36,6 +36,10 @@ async function start(){
     illust_card_check();
     console.log(illust_exist);
     checked_reset();
+    let start_button = document.getElementById("start");
+    start_button.classList.add("start_button");
+    start_button.style.display = "none";
+
 }
 
 async function divide(){
