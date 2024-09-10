@@ -6,6 +6,7 @@ let checked_player_value = 0;
 async function capture(){
     checked_player = [];
     checked_player_value = 0;
+    suit_check = 0;
     //選択された場所をtrueにする
     for(let i = 0;i < 4;i++){
         if(player_checkbox[i].checked){
@@ -22,38 +23,43 @@ async function capture(){
         }
     }
     joker_exist = 0;
+    //ジョーカーの数を数える
     for(let i = 0;i < 4;i++){
         if(player_hands[i] == true){
+            //json型じゃなくなってる?
             checked_player.push(player_card[i]);
             if(player_card[i].suit == "BLACK" || player_card[i].suit == "RED"){
                 joker_exist += 1;
             }
-        }   
+        }
+        //選択された敵カードを変数に格納
         if(oppo_hands[i] == true){
             checked_oppo = oppo_card[i]; 
         }
     }
     console.log(checked_player)
     console.log(checked_oppo)
+    //プレイヤー選択カードにジョーカーがあったら下へ
     if(joker_exist == 0){
         capture_execute();
     }else {
         joker_execute();
     }
 }
+let suit_check = 0;
 async function capture_execute(){
-    if(checked_oppo.suit == checked_player[0].suit){        
-        for(let i = 0;i < checked_player.length;i++){
-            if(checked_oppo.suit == checked_player[i].suit){
-                checked_player_value += checked_player[i].value;
-                console.log(checked_player_value);
-            }else{
-                console.log("違うスートが選択されています");
-                checked_player[i] = false;
-                player_checkbox.checked = false;
-            }
+    console.log(checked_player[0].suit);
+    for(let i = 0;i < checked_player.length;i++){
+        if(checked_oppo.suit != checked_player[i].suit){
+            suit_check = 1;
         }
-        console.log(checked_player)
+    }
+    if(suit_check == 0){
+        for(let i = 0;i < checked_player.length;i++){
+            checked_player_value += checked_player[i].value;
+        }
+        console.log(checked_player_value);
+
         if(checked_player_value >= checked_oppo.value){
             console.log("捕獲します")
             for(let i = 0;i < 4;i++){
@@ -67,12 +73,15 @@ async function capture_execute(){
                 }
             }
         }
+        console.log(player_capture);
+        right_just(oppo_card,1);
+        await fill_in();
+        oppo_set();
+        player_hand_fill();
+        checked_reset();
+    }else{
+        console.log("スートが違うよ")
     }
-    right_just(oppo_card,1);
-    await fill_in();
-    oppo_set();
-    player_hand_fill();
-    checked_reset();
 }
 let select_card_id = [];
 let joker_hands = [];
