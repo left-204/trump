@@ -13,8 +13,18 @@ async function oppo_draw(){
 async function player_draw(){
     apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/player_deck/draw/?count=1";
     response = await fetch(apiUrl_draw);
+    console.log(response);
     //jsの型に変換
     player_draw_card = await response.json();
+    console.log(player_draw_card);
+    if(player_draw_card.success == false){
+        await player_capture_reset()
+        apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/player_deck/draw/?count=1";
+    response = await fetch(apiUrl_draw);
+    console.log(response);
+    //jsの型に変換
+    player_draw_card = await response.json();
+    }
     player_draw_card.cards[0].value = numchange(player_draw_card.cards[0].value)
     console.log("手札を引きます");
 }
@@ -119,4 +129,19 @@ function checked_reset(){
         oppo_checkbox[i].checked = false;
         player_checkbox[i].checked = false;
     }
+}
+
+async function player_capture_reset(){
+    let card_code ="";
+    for(let i = 0;i < player_capture.length;i++){           
+        if(i != 0){
+            card_code = card_code + "," + player_capture[i].code;
+        }else {
+            card_code = player_capture[i].code;
+        }
+    }
+    let deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/player_deck/add/?cards=" + card_code;
+    response = await fetch(deck_api);
+    //jsの型に変換
+    deck = await response.json();
 }
