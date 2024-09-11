@@ -167,3 +167,7 @@ async function oppo_deck_reset(){
     //jsの型に変換
     deck = await response.json();
 }
+
+async function draw(){
+    await player_hand_fill();
+}

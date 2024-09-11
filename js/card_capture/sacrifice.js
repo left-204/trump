@@ -4,11 +4,12 @@ async function sacrifice(){
             console.log(player_card[i]);
             oppo_capture.push(player_card[i]);
             player_card[i] = null;
+            card_img[i].src ="https://www.deckofcardsapi.com/static/img/back.png";
         }else{
             console.log("チェックされてないよ");
         }
     }
-    await player_hand_fill(); 
+    // await player_hand_fill(); 
     
     for(let i = 0;i < 4;i++){
         if(oppo_checkbox[i].checked){
