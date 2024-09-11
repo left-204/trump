@@ -18,6 +18,8 @@ async function sacrifice(){
             oppo_capture.push(player_card[i]);
             player_card[i] = null;
             card_img[i].src ="https://www.deckofcardsapi.com/static/img/back.png";
+            card_id = document.getElementById("oppo_capture");
+            card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
             }else {
                 console.log("絵柄カードは選べないよ");
                 illust_check = 1;
