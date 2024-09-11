@@ -17,9 +17,12 @@ let card_img = [4];
 let illust_exist = 0;
 let player_deck ="";
 let start_hand_symbol =["2S","3S","4S","2D","3D","4D","2C","3C","4C","2H","3H","4H","X1","X2"];
-
+let message_box = "";
 
 async function start(){
+    let start_button = document.getElementById("start");
+    start_button.classList.add("start_button");
+    start_button.style.display = "none";
     //デッキ生成
     response = await fetch(apiUrl);
     //jsの型に変換
@@ -36,11 +39,16 @@ async function start(){
     await set();
     
     illust_card_check();
-    console.log(illust_exist);
+    
     checked_reset();
-    let start_button = document.getElementById("start");
-    start_button.classList.add("start_button");
-    start_button.style.display = "none";
+    console.log(illust_exist);
+    message_box = document.getElementById("message_box");
+    text_message = document.getElementById("text_message");
+    if(illust_exist == 1){
+        re_draw_message();
+    }else {
+            dis_button_disp();
+    }
 
 }
 
@@ -133,4 +141,21 @@ async function oppo_set() {
         card_id.src = oppo_card[i].image;
     }
     console.log(oppo_card)
+}
+function re_draw_message(){
+    console.log(message_box)
+    // .style.display = "block"
+    let text_message = document.createElement("p");
+    text_message.innerHTML = "初期相手手札に絵柄カードが含まれるため山札へ送り再度ドローします";
+    let next_button = document.createElement("button");
+    next_button.setAttribute('onclick', 're_draw()');
+    next_button.innerHTML ="次へ";
+    message_box.appendChild(text_message);
+    message_box.appendChild(next_button);
+    message_box.style.display = "block"
+}
+
+function message_box_reset(){
+    message_box.innerHTML = "";
+    message_box.style.display = "none";
 }

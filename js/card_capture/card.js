@@ -66,8 +66,15 @@ async function re_draw(){
     right_just(oppo_card,null_count);
     await fill_in();
     oppo_set();
+    message_box_reset();
+    dis_button_disp();
 }
-
+function dis_button_disp(){
+    let Phase_button = document.getElementById("Phase_button");
+    Phase_button.style.display = "block";
+    let dis_button = document.getElementById("discard");
+    dis_button.style.display = "block";
+}
 function numchange(value){
     // console.log(value);
         switch(value){
