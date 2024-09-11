@@ -83,6 +83,7 @@ async function capture_execute(joker_value){
                 if(player_hands[i] == true){
                     player_capture.push(player_card[i]);
                     player_card[i] = null;
+                    card_img[i].src ="https://www.deckofcardsapi.com/static/img/back.png";
                 }
             }
         }
@@ -90,7 +91,7 @@ async function capture_execute(joker_value){
         right_just(oppo_card,1);
         await fill_in();
         oppo_set();
-        player_hand_fill();
+        // await player_hand_fill();
         checked_reset();
     }else{
         console.log("スートが違うよ")
