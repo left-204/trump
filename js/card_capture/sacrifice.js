@@ -12,8 +12,9 @@ async function sacrifice(){
     }
     if(sacrifice_player == 2 && sacrifice_oppo == 1){
     for(let i = 0;i < 4;i++){
+        console.log(player_card);
         if(player_checkbox[i].checked){
-            if(player_card[i].value <= 10){
+            if(player_card[i].value <= 10 || player_card[i].suit == "RED" || player_card[i].suit == "BLACK"){
             console.log(player_card[i]);
             oppo_capture.push(player_card[i]);
             player_card[i] = null;
