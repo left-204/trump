@@ -47,7 +47,7 @@ async function start(){
     if(illust_exist == 1){
         re_draw_message();
     }else {
-            dis_button_disp();
+        dis_button_disp();
     }
 
 }
@@ -152,10 +152,10 @@ function re_draw_message(){
     next_button.innerHTML ="次へ";
     message_box.appendChild(text_message);
     message_box.appendChild(next_button);
-    message_box.style.display = "block"
+    message_box.style.visibility = "visible";
 }
 
 function message_box_reset(){
     message_box.innerHTML = "";
-    message_box.style.display = "none";
+    message_box.style.visibility = "hidden";
 }

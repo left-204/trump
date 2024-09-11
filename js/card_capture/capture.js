@@ -125,14 +125,14 @@ function joker_execute(){
     console.log(select_card);
     for(let i = 0;i < 3;i++){
         select_card_button[i] = document.getElementById("select_button_" + i);
-        select_card_button[i].style.display = "none";
+        select_card_button[i].style.visibility = "hidden";
     }
     for(let i = 0;i < select_card.length;i++){
         select_card_id[i].src = select_card[i].image;
-        select_card_button[i].style.display = "block";
+        select_card_button[i].style.visibility = "visible";
     }
     let joker_card_select_id = document.getElementById("joker_card_select");
-    joker_card_select_id.style.display = "block";
+    joker_card_select_id.style.visibility = "visible";
 
 
 }
@@ -145,6 +145,6 @@ function select_card_set(select){
         joker_value += joker_value;
     }
     let joker_card_select_id = document.getElementById("joker_card_select");
-    joker_card_select_id.style.display = "none";
+    joker_card_select_id.style.visibility = "hidden";
     capture_execute(joker_value);
 }
