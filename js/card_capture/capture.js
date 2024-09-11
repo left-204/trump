@@ -6,6 +6,7 @@ let checked_player_value = 0;
 let select_card_id = [];
 let joker_hands = [];
 let select_card = [];
+let select_card_button = [3];
 async function capture(){
     checked_player = [];
     checked_player_value = 0;
@@ -121,9 +122,16 @@ function joker_execute(){
         }
     }
     console.log(select_card);
+    for(let i = 0;i < 3;i++){
+        select_card_button[i] = document.getElementById("select_button_" + i);
+        select_card_button[i].style.display = "none";
+    }
     for(let i = 0;i < select_card.length;i++){
         select_card_id[i].src = select_card[i].image;
+        select_card_button[i].style.display = "block";
     }
+    let joker_card_select_id = document.getElementById("joker_card_select");
+    joker_card_select_id.style.display = "block";
 
 
 }
@@ -135,6 +143,7 @@ function select_card_set(select){
     if(joker_exist >= 2){
         joker_value += joker_value;
     }
-
+    let joker_card_select_id = document.getElementById("joker_card_select");
+    joker_card_select_id.style.display = "none";
     capture_execute(joker_value);
 }
