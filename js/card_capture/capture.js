@@ -91,7 +91,7 @@ async function capture_execute(joker_value){
         console.log(player_capture);
         right_just(oppo_card,1);
         await fill_in();
-        oppo_set();
+        await oppo_set();
         // await player_hand_fill();
         checked_reset();
     }else{
@@ -101,6 +101,7 @@ async function capture_execute(joker_value){
 
 function joker_execute(){
     select_card.splice(0);
+    joker_hands.splice(0);
     for(let i = 0;i < 3;i++){
         select_card_id[i] = document.getElementById("select_card_" + i);
         // console.log(select_card_id[i])

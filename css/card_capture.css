@@ -78,7 +78,18 @@ img {
     border-radius: 20px;
     color: white;
     border: solid 3px #fff;
+    height: 40px;
+    text-align: center;
+    position: relative;
+}
+#message_box{
+    background-color: #00000073;
+    border-radius: 20px;
+    color: white;
+    border: solid 3px #fff;
+    display: none;
 }
 #discard,#next,#captured,#capture,#sacrifice,#draw{
     background-color: #00000000;
+    visibility:hidden;
 }
