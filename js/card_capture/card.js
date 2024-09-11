@@ -66,6 +66,7 @@ async function re_draw(){
     right_just(oppo_card,null_count);
     await fill_in();
     oppo_set();
+    message_box_reset();
 }
 
 function numchange(value){

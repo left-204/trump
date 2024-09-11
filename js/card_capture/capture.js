@@ -91,7 +91,7 @@ async function capture_execute(joker_value){
         console.log(player_capture);
         right_just(oppo_card,1);
         await fill_in();
-        oppo_set();
+        await oppo_set();
         // await player_hand_fill();
         checked_reset();
     }else{

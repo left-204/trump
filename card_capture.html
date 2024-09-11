@@ -30,7 +30,6 @@
             </div>
         </div>
         <button class="button_position" onclick="discard()">捨てる</button>
-        <button class="button_position" onclick="re_draw()">次へ</button>
         <button class="button_position" id="captured" onclick="captured()">捕獲される</button>
         <button class="button_position" id="capture" onclick="capture()">捕獲する</button>
         <button class="button_position" id="sacrifice" onclick="sacrifice()">生贄</button>
@@ -41,6 +40,9 @@
         <button onclick ="select_card_set(0)" id ="select_button_0"><img id = "select_card_0"></button>
         <button onclick ="select_card_set(1)" id ="select_button_1"><img id = "select_card_1"></button>
         <button onclick ="select_card_set(2)" id ="select_button_2"><img id = "select_card_2"></button>
+    </div>
+    <div class ="message_box" id ="message_box">
+        <p id = "text_message"></p>
     </div>
 </body>
 <script src="js/card_capture/start.js"></script>
