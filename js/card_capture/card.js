@@ -10,13 +10,13 @@ async function oppo_draw(){
         await oppo_deck_reset();
         oppo_deck_history.splice(0); 
         apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/oppo_deck/draw/?count=1";
-    response = await fetch(apiUrl_draw);
-    // console.log(response);
-    //jsの型に変換
-    player_draw_card = await response.json();
+        response = await fetch(apiUrl_draw);
+        console.log(response);
+        //jsの型に変換
+        player_draw_card = await response.json();
     }
     // console.log("山札から引きます");
-    oppo_draw_card.cards[0].value = numchange(oppo_draw_card.cards[0].value)
+    oppo_draw_card.cards[0].value = numchange(oppo_draw_card.cards[0].value);
     //console.log(oppo_draw_card.cards[0].value);
 }
 async function player_draw(){
@@ -70,10 +70,26 @@ async function re_draw(){
     dis_button_disp();
 }
 function dis_button_disp(){
-    let Phase_button = document.getElementById("Phase_button");
-    Phase_button.style.visibility = "visible";
-    let dis_button = document.getElementById("discard");
-    dis_button.style.visibility = "visible";
+    let dis_button = document.getElementsByClassName("button_discard");
+    dis_button[0].style.visibility = "visible";
+    let draw_button = document.getElementsByClassName("button_draw");
+    draw_button[0].style.visibility = "visible";
+    //捕獲される
+    let button_captured = document.getElementsByClassName("button_captured");
+    button_captured[0].style.visibility = "hidden";
+    //捕獲する
+    let button_capture = document.getElementsByClassName("button_capture");
+    button_capture[0].style.visibility = "hidden";
+    //生贄
+    let button_sacrifice = document.getElementsByClassName("button_sacrifice");
+    button_sacrifice[0].style.visibility = "hidden";
+    let text_message = document.createElement("p");
+    text_message.innerHTML = "捨てるフェーズ";
+    message_box.appendChild(text_message);
+    let explain_message = document.createElement("p");
+    explain_message.innerHTML = "捨てるカードを選択してください捨てない場合はドロー";
+    message_box.appendChild(explain_message);
+    message_box.style.visibility = "visible";
 }
 function numchange(value){
     // console.log(value);
@@ -151,12 +167,14 @@ function checked_reset(){
 
 async function player_capture_reset(){
     let card_code ="";
+    console.log(player_capture)
     for(let i = 0;i < player_capture.length;i++){           
         if(i != 0){
             card_code = card_code + "," + player_capture[i].code;
         }else {
             card_code = player_capture[i].code;
         }
+        console.log(card_code)
     }
     let deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/player_deck/add/?cards=" + card_code;
     response = await fetch(deck_api);
@@ -181,4 +199,29 @@ async function oppo_deck_reset(){
 
 async function draw(){
     await player_hand_fill();
+    message_box_reset();
+    capture_phase_button()
+}
+
+function capture_phase_button(){
+    //捕獲される
+    let button_captured = document.getElementsByClassName("button_captured");
+    button_captured[0].style.visibility = "visible";
+    //捕獲する
+    let button_capture = document.getElementsByClassName("button_capture");
+    button_capture[0].style.visibility = "visible";
+    //生贄
+    let button_sacrifice = document.getElementsByClassName("button_sacrifice");
+    button_sacrifice[0].style.visibility = "visible";
+    let dis_button = document.getElementsByClassName("button_discard");
+    dis_button[0].style.visibility = "hidden";
+    let draw_button = document.getElementsByClassName("button_draw");
+    draw_button[0].style.visibility = "hidden";
+    let text_message = document.createElement("p");
+    text_message.innerHTML = "行動フェーズ";
+    message_box.appendChild(text_message);
+    let explain_message = document.createElement("p");
+    explain_message.innerHTML = "捕獲を行います、できない場合は捕獲されるか、生贄にしてください";
+    message_box.appendChild(explain_message);
+    message_box.style.visibility = "visible";
 }

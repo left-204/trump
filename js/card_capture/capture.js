@@ -6,7 +6,6 @@ let checked_player_value = 0;
 let select_card_id = [];
 let joker_hands = [];
 let select_card = [];
-let select_card_button = [3];
 async function capture(){
     checked_player = [];
     checked_player_value = 0;
@@ -50,6 +49,7 @@ async function capture(){
     }
 }
 let suit_check = 0;
+let joker_check = 0;
 //捕獲処理joker_valueはジョーカー処理で指定された数値を持ってくる
 async function capture_execute(joker_value){
     checked_player_value += joker_value;
@@ -59,10 +59,12 @@ async function capture_execute(joker_value){
     //スート確認違うのがあったら1がついて捕獲に入れない
     for(let i = 0;i < checked_player.length;i++){
         if(checked_oppo.suit != checked_player[i].suit){
-            suit_check = 1;
+            if(checked_player[i].suit != "BLACK" && checked_player[i].suit != "RED"){
+                suit_check = 1;
+            }
         }
         if(joker_value >= 1){
-            suit_check = 0;
+            joker_check = 1;
         }
     }
     if(suit_check == 0){
@@ -94,6 +96,8 @@ async function capture_execute(joker_value){
         await oppo_set();
         // await player_hand_fill();
         checked_reset();
+        message_box_reset();
+        dis_button_disp();
     }else{
         console.log("スートが違うよ")
     }
@@ -124,15 +128,15 @@ function joker_execute(){
     }
     console.log(select_card);
     for(let i = 0;i < 3;i++){
-        select_card_button[i] = document.getElementById("select_button_" + i);
-        select_card_button[i].style.visibility = "hidden";
+        select_card_button[i].style.display = "none";
     }
+
     for(let i = 0;i < select_card.length;i++){
         select_card_id[i].src = select_card[i].image;
-        select_card_button[i].style.visibility = "visible";
+        select_card_button[i].style.display = "block";
     }
-    let joker_card_select_id = document.getElementById("joker_card_select");
-    joker_card_select_id.style.visibility = "visible";
+    let joker_card_select_id = document.getElementsByClassName("joker_card_select");
+    joker_card_select_id[0].style.display = "block";
 
 
 }
@@ -144,7 +148,7 @@ function select_card_set(select){
     if(joker_exist >= 2){
         joker_value += joker_value;
     }
-    let joker_card_select_id = document.getElementById("joker_card_select");
-    joker_card_select_id.style.visibility = "hidden";
+    let joker_card_select_id = document.getElementsByClassName("joker_card_select");
+    joker_card_select_id[0].style.display = "none";
     capture_execute(joker_value);
 }
