@@ -46,6 +46,8 @@ async function start(){
     text_message = document.getElementById("text_message");
     if(illust_exist == 1){
         re_draw_message();
+    }else {
+            dis_button_disp();
     }
 
 }
@@ -144,11 +146,13 @@ function re_draw_message(){
     console.log(message_box)
     // .style.display = "block"
     let text_message = document.createElement("p");
-    text_message.innerText = "初期相手手札に絵柄カードが含まれるため山札へ送り再度ドローします";
+    text_message.innerHTML = "初期相手手札に絵柄カードが含まれるため山札へ送り再度ドローします";
     let next_button = document.createElement("button");
     next_button.setAttribute('onclick', 're_draw()');
     next_button.innerHTML ="次へ";
+    message_box.appendChild(text_message);
     message_box.appendChild(next_button);
+    message_box.style.display = "block"
 }
 
 function message_box_reset(){

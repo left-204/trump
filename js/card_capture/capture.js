@@ -101,6 +101,7 @@ async function capture_execute(joker_value){
 
 function joker_execute(){
     select_card.splice(0);
+    joker_hands.splice(0);
     for(let i = 0;i < 3;i++){
         select_card_id[i] = document.getElementById("select_card_" + i);
         // console.log(select_card_id[i])
