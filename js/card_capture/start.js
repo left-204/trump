@@ -150,7 +150,6 @@ async function oppo_set() {
 }
 function re_draw_message(){
     //console.log(message_box)
-    // .style.display = "block"
     let text_message = document.createElement("p");
     text_message.innerHTML = "初期相手手札に絵柄カードが含まれるため山札へ送り再度ドローします";
     let next_button = document.createElement("button");
