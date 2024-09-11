@@ -40,7 +40,7 @@ img {
 .button_position{
     font-size: 25px;
     background: #00000000;
-    border: none;
+    visibility:hidden;
     color: white;
     max-width: 800px;
 }
@@ -62,13 +62,14 @@ img {
 
 /* ジョーカー用枠 */
 .joker_card_select{
-    display: none;
+    position: absolute;
+    visibility:hidden;
     background-color: #00000073;
     border-radius: 20px;
     border: solid 3px #fff;
 }
 #select_button_0,#select_button_1,#select_button_2{
-    border: none;
+    visibility:hidden;
     background-color: #00000000;
 }
 
@@ -87,9 +88,10 @@ img {
     border-radius: 20px;
     color: white;
     border: solid 3px #fff;
-    display: none;
+    visibility:hidden;
 }
 #discard,#next,#captured,#capture,#sacrifice,#draw{
     background-color: #00000000;
-    visibility:hidden;
+    border: none;
+    visibility:visible;
 }
