@@ -71,9 +71,9 @@ async function re_draw(){
 }
 function dis_button_disp(){
     let Phase_button = document.getElementById("Phase_button");
-    Phase_button.style.display = "block";
+    Phase_button.style.visibility = "visible";
     let dis_button = document.getElementById("discard");
-    dis_button.style.display = "block";
+    dis_button.style.visibility = "visible";
 }
 function numchange(value){
     // console.log(value);
