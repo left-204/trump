@@ -8,6 +8,7 @@ async function oppo_draw(){
     oppo_draw_card = await response.json();
     if(oppo_draw_card.success == false){
         await oppo_deck_reset();
+        oppo_deck_history.splice(0); 
         apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/oppo_deck/draw/?count=1";
     response = await fetch(apiUrl_draw);
     // console.log(response);
@@ -28,6 +29,7 @@ async function player_draw(){
     if(player_draw_card.success == false){
         await player_capture_reset();
         await player_shuffle();
+        player_capture.splice(0); 
         apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/player_deck/draw/?count=1";
     response = await fetch(apiUrl_draw);
     // console.log(response);
@@ -157,16 +159,18 @@ async function player_capture_reset(){
 
 async function oppo_deck_reset(){
     let card_code = "";
-    if(i != 0){
-        card_code = card_code + "," + oppo_deck_history[i].code;
-    }else {
-        card_code = oppo_deck_history[i].code;
-    }
-    let deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/oppo_deck/add/?cards=" + card_code;
-    response = await fetch(deck_api);
-    //jsの型に変換
-    deck = await response.json();
-}
+    for(let i = 0;i < oppo_deck_history.length;i++){  
+        if(i != 0){
+            card_code = card_code + "," + oppo_deck_history[i].code;
+        }else {
+            card_code = oppo_deck_history[i].code;
+        }
+        let deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/oppo_deck/add/?cards=" + card_code;
+        response = await fetch(deck_api);
+        //jsの型に変換
+        deck = await response.json();
+    }   
+}   
 
 async function draw(){
     await player_hand_fill();
