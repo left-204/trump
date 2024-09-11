@@ -38,8 +38,11 @@ img {
 }
 
 .button_position{
-    text-align: center;
-    margin : 0 30px;
+    font-size: 25px;
+    background: #00000000;
+    border: none;
+    color: white;
+    max-width: 800px;
 }
 
 /* 敵＆自分カード全体div囲み */
@@ -57,6 +60,7 @@ img {
     margin-left: 30px;
 }
 
+/* ジョーカー用枠 */
 .joker_card_select{
     display: none;
     background-color: #00000073;
@@ -65,5 +69,16 @@ img {
 }
 #select_button_0,#select_button_1,#select_button_2{
     border: none;
+    background-color: #00000000;
+}
+
+/* プレイヤー選択ボタン用 */
+.Phase_button{
+    background-color: #00000073;
+    border-radius: 20px;
+    color: white;
+    border: solid 3px #fff;
+}
+#discard,#next,#captured,#capture,#sacrifice,#draw{
     background-color: #00000000;
 }

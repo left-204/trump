@@ -7,12 +7,12 @@
 </head>
 
 <body>
-    <div class = "start">
-    <button class = "start_move" id="start" onclick="start()">スタート</button>
+    <div class="start">
+        <button class="start_move" id="start" onclick="start()">スタート</button>
     </div>
     <div class="ALL_Card">
         <div id="display">
-            <div class = "Enemy_Card"; id="opponent">
+            <div class="Enemy_Card" ; id="opponent">
                 <img id="oppo_deck">
                 <label><input type="radio" name="oppo_card" id="oppo_card_3_box"><img id="oppo_card_3"></label>
                 <label><input type="radio" name="oppo_card" id="oppo_card_2_box"><img id="oppo_card_2"></label>
@@ -29,19 +29,20 @@
                 <img id="player_capture">
             </div>
         </div>
-        <button class="button_position" onclick="discard()">捨てる</button>
-        <button class="button_position" onclick="re_draw()">次へ</button>
-        <button class="button_position" id="captured" onclick="captured()">捕獲される</button>
-        <button class="button_position" id="capture" onclick="capture()">捕獲する</button>
-        <button class="button_position" id="sacrifice" onclick="sacrifice()">生贄</button>
-        <button class="button_position" id="draw" onclick="draw()">ドロー</button>
-    </div>
+        <div id="Phase_button" class="Phase_button">
+            <button class="button_position" id="discard" onclick="discard()">捨てる</button>
+            <button class="button_position" id="next" onclick="re_draw()">次へ</button>
+            <button class="button_position" id="captured" onclick="captured()">捕獲される</button>
+            <button class="button_position" id="capture" onclick="capture()">捕獲する</button>
+            <button class="button_position" id="sacrifice" onclick="sacrifice()">生贄</button>
+            <button class="button_position" id="draw" onclick="draw()">ドロー</button>
+        </div>
 
-    <div id ="joker_card_select" class ="joker_card_select">
-        <button onclick ="select_card_set(0)" id ="select_button_0"><img id = "select_card_0"></button>
-        <button onclick ="select_card_set(1)" id ="select_button_1"><img id = "select_card_1"></button>
-        <button onclick ="select_card_set(2)" id ="select_button_2"><img id = "select_card_2"></button>
-    </div>
+        <div id="joker_card_select" class="joker_card_select">
+            <button onclick="select_card_set(0)" id="select_button_0"><img id="select_card_0"></button>
+            <button onclick="select_card_set(1)" id="select_button_1"><img id="select_card_1"></button>
+            <button onclick="select_card_set(2)" id="select_button_2"><img id="select_card_2"></button>
+        </div>
 </body>
 <script src="js/card_capture/start.js"></script>
 <script src="js/card_capture/card.js"></script>
