@@ -54,6 +54,7 @@ async function capture_execute(joker_value){
     checked_player_value += joker_value;
     console.log(checked_player[0].suit);
     console.log(joker_exist);
+    console.log(checked_player_value);
     //スート確認違うのがあったら1がついて捕獲に入れない
     for(let i = 0;i < checked_player.length;i++){
         if(checked_oppo.suit != checked_player[i].suit){
@@ -66,8 +67,8 @@ async function capture_execute(joker_value){
     if(suit_check == 0){
         for(let i = 0;i < checked_player.length;i++){
             console.log(checked_player[i].suit);
-            if(checked_player[i].suit != "BLACK" || checked_player[i].suit != "RED"){
-            checked_player_value += checked_player[i].value;
+            if(checked_player[i].suit != "BLACK" && checked_player[i].suit != "RED"){
+                checked_player_value += checked_player[i].value;
             }
         }
         console.log(checked_player_value);
@@ -119,7 +120,6 @@ function joker_execute(){
         }
     }
     console.log(select_card);
-    console.log(select_card.length);
     for(let i = 0;i < select_card.length;i++){
         select_card_id[i].src = select_card[i].image;
     }
