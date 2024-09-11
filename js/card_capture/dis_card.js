@@ -32,5 +32,7 @@ async function discard() {
 
     //次のカードを引く
     player_hand_fill();
+    message_box_reset();
     checked_reset();
+    capture_phase_button()
   }

@@ -13,6 +13,7 @@ let oppo_card = [4];
 let oppo_checkbox = [4];
 let player_card =[4];
 let player_checkbox = [4];
+let select_card_button = [3];
 let card_img = [4];
 let illust_exist = 0;
 let player_deck ="";
@@ -44,6 +45,8 @@ async function start(){
     console.log(illust_exist);
     message_box = document.getElementById("message_box");
     text_message = document.getElementById("text_message");
+    let Phase_button = document.getElementsByClassName("Phase_button");
+    Phase_button[0].style.display = "block";
     if(illust_exist == 1){
         re_draw_message();
     }else {
@@ -126,6 +129,9 @@ async function set(){
         player_checkbox[i] = document.getElementById("player_card_"+ i +"_box");
         oppo_checkbox[i] = document.getElementById("oppo_card_"+ i +"_box");
     }
+    for(let i = 0;i < 3;i++){
+        select_card_button[i] = document.getElementById("select_button_" + i);
+    }
     
     card_id = document.getElementById("oppo_deck");
     card_id.src = "https://www.deckofcardsapi.com/static/img/back.png";
@@ -143,7 +149,7 @@ async function oppo_set() {
     console.log(oppo_card)
 }
 function re_draw_message(){
-    console.log(message_box)
+    //console.log(message_box)
     // .style.display = "block"
     let text_message = document.createElement("p");
     text_message.innerHTML = "初期相手手札に絵柄カードが含まれるため山札へ送り再度ドローします";

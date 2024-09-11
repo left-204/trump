@@ -50,4 +50,6 @@ async function sacrifice(){
     }
     
     checked_reset();
+    message_box_reset();
+    dis_button_disp();
 }
