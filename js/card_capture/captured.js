@@ -14,7 +14,7 @@ async function captured() {
     if(captured_card == 1){
     for(let i = 0;i < 4;i++){
         if(player_checkbox[i].checked){
-            if(player_card <= 10){
+            if(player_card[i].value <= 10){
                 console.log(player_card[i]);
                 oppo_capture.push(player_card[i]);
                 player_card[i] = null;
