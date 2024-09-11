@@ -31,7 +31,7 @@ async function start(){
     //山札をシャッフルする
     await oppo_shuffle();
     await player_shuffle();
-    
+
     await set();
     
     illust_card_check();
@@ -130,4 +130,5 @@ async function oppo_set() {
         card_id = document.getElementById("oppo_card_"+i);
         card_id.src = oppo_card[i].image;
     }
+    console.log(oppo_card)
 }

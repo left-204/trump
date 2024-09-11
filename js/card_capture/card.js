@@ -8,26 +8,26 @@ async function oppo_draw(){
     oppo_draw_card = await response.json();
     // console.log("山札から引きます");
     oppo_draw_card.cards[0].value = numchange(oppo_draw_card.cards[0].value)
-    console.log(oppo_draw_card.cards[0].value);
+    //console.log(oppo_draw_card.cards[0].value);
 }
 async function player_draw(){
     apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/player_deck/draw/?count=1";
     response = await fetch(apiUrl_draw);
-    console.log(response);
+    // console.log(response);
     //jsの型に変換
     player_draw_card = await response.json();
-    console.log(player_draw_card);
+    // console.log(player_draw_card);
     if(player_draw_card.success == false){
         await player_capture_reset();
         await player_shuffle();
         apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/player_deck/draw/?count=1";
     response = await fetch(apiUrl_draw);
-    console.log(response);
+    // console.log(response);
     //jsの型に変換
     player_draw_card = await response.json();
     }
     player_draw_card.cards[0].value = numchange(player_draw_card.cards[0].value)
-    console.log("手札を引きます");
+    // console.log("手札を引きます");
 }
 
 function illust_card_check() {
@@ -45,14 +45,14 @@ async function re_draw(){
     //絵柄を消す処理
     for(let i = 0;i < 4;i++){
         if(oppo_card[i].value >= 11){
-            console.log(oppo_card[i].code);
+            // console.log(oppo_card[i].code);
             oppo_deck_history.push(oppo_card[i]);
-            console.log(oppo_draw_card);
+            // console.log(oppo_draw_card);
             oppo_card[i] = null;
             null_count += 1;
         }
     }
-    console.log(oppo_card);
+    // console.log(oppo_card);
     right_just(oppo_card,null_count);
     await fill_in();
     oppo_set();
