@@ -24,6 +24,8 @@ async function start(){
     //スタートボタンを消す
     let start_button = document.getElementById("start");
     start_button.style.display = "none";
+    let title = document.getElementById("title");
+    title.style.display = "none";
     //ジョーカーが入ったデッキ生成
     response = await fetch(apiUrl);
     //jsの型に変換
