@@ -6,14 +6,19 @@ async function oppo_draw(){
     response = await fetch(apiUrl_draw);
     //jsの型に変換
     oppo_draw_card = await response.json();
+    let list_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/oppo_deck/list/"
+    response = await fetch(list_api);
+    //jsの型に変換
+    list = await response.json();
+    console.log(list)
     if(oppo_draw_card.success == false){
         await oppo_deck_reset();
-        oppo_deck_history.splice(0); 
         apiUrl_draw = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/oppo_deck/draw/?count=1";
         response = await fetch(apiUrl_draw);
         console.log(response);
         //jsの型に変換
         player_draw_card = await response.json();
+        oppo_deck_history.splice(0); 
     }
     // console.log("山札から引きます");
     oppo_draw_card.cards[0].value = numchange(oppo_draw_card.cards[0].value);
@@ -187,10 +192,12 @@ async function player_capture_reset(){
     console.log(response)
     //jsの型に変換
     deck = await response.json();
+    console.log(deck)
 }
 
 async function oppo_deck_reset(){
     let card_code = "";
+    console.log(oppo_deck_history);
     for(let i = 0;i < oppo_deck_history.length;i++){  
         if(i != 0){
             card_code = card_code + "," + oppo_deck_history[i].code;
@@ -198,6 +205,7 @@ async function oppo_deck_reset(){
             card_code = oppo_deck_history[i].code;
         }
     }   
+    console.log(card_code)
     let deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/oppo_deck/add/?cards=" + card_code;
     response = await fetch(deck_api);
     //jsの型に変換

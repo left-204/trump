@@ -83,11 +83,13 @@ async function divide(){
             }
         }
     }
+    // console.log(card_code)
     //apiに送信する
     let deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/oppo_deck/add/?cards=" + card_code;
     response = await fetch(deck_api);
     //jsの型に変換
     deck = await response.json();
+    // console.log(deck)
 
 }
 
@@ -159,7 +161,10 @@ async function set(){
 
 async function oppo_set() {
     for(let i = 0;i < 4;i++){
-        await oppo_draw();
+        if(oppo_card[i] == null){
+            await oppo_draw();
+            oppo_card[i] = oppo_draw_card.cards[0];
+        }
         card_id = document.getElementById("oppo_card_"+i);
         card_id.src = oppo_card[i].image;
     }
