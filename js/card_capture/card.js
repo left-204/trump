@@ -87,7 +87,7 @@ function dis_button_disp(){
     text_message.innerHTML = "捨てるフェーズ";
     message_box.appendChild(text_message);
     let explain_message = document.createElement("p");
-    explain_message.innerHTML = "捨てるカードを選択してください捨てない場合はドロー";
+    explain_message.innerHTML = "捨てるカードを選択してください捨てない場合は捨てない";
     message_box.appendChild(explain_message);
     message_box.style.visibility = "visible";
 }
@@ -162,6 +162,12 @@ function checked_reset(){
     for(let i = 0 ; i<4; i ++){
         oppo_checkbox[i].checked = false;
         player_checkbox[i].checked = false;
+        $('#player_card_' + i).css({
+            backgroundColor : '#00000000',
+        })
+        $('#oppo_card_' + i).css({
+            backgroundColor : '#00000000',
+        })
     }
 }
 
@@ -178,6 +184,7 @@ async function player_capture_reset(){
     }
     let deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/player_deck/add/?cards=" + card_code;
     response = await fetch(deck_api);
+    console.log(response)
     //jsの型に変換
     deck = await response.json();
 }
@@ -190,11 +197,12 @@ async function oppo_deck_reset(){
         }else {
             card_code = oppo_deck_history[i].code;
         }
-        let deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/oppo_deck/add/?cards=" + card_code;
-        response = await fetch(deck_api);
-        //jsの型に変換
-        deck = await response.json();
     }   
+    let deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/oppo_deck/add/?cards=" + card_code;
+    response = await fetch(deck_api);
+    //jsの型に変換
+    deck = await response.json();
+    console.log(deck)
 }   
 
 async function draw(){
