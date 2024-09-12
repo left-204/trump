@@ -58,6 +58,7 @@ async function capture_execute(joker_value){
     console.log(checked_player_value);
     //スート確認違うのがあったら1がついて捕獲に入れない
     for(let i = 0;i < checked_player.length;i++){
+        //スートが違ってjokerでもなかったら1
         if(checked_oppo.suit != checked_player[i].suit){
             if(checked_player[i].suit != "BLACK" && checked_player[i].suit != "RED"){
                 suit_check = 1;
@@ -67,7 +68,8 @@ async function capture_execute(joker_value){
             joker_check = 1;
         }
     }
-    if(suit_check == 0){
+
+    if(suit_check == 0 || suit_check == 0 && joker_check == 1){
         for(let i = 0;i < checked_player.length;i++){
             console.log(checked_player[i].suit);
             if(checked_player[i].suit != "BLACK" && checked_player[i].suit != "RED"){
