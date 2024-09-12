@@ -43,9 +43,9 @@ async function captured() {
         console.log(oppo_card)
         await fill_in()
         oppo_set()
+        checked_reset();
+        message_box_reset();
+        dis_button_disp();
         }
     }
-    checked_reset();
-    message_box_reset();
-    dis_button_disp();
   }
