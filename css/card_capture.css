@@ -25,11 +25,7 @@ img {
     width: 150px;
     height: auto;
 }
-#player_card_0,#player_card_1,#player_card_2,#player_card_3,
-#oppo_card_0,#oppo_card_1,#oppo_card_2,#oppo_card_3{
-    padding: 3px;
-    background-color: #00000000;
-}
+
 /* Startボタンの位置 */
 .start{
     margin : 20px 0;
@@ -39,6 +35,14 @@ img {
 .start_move{
     width: 120px;
     height: 60px;
+}
+
+.button_position{
+    font-size: 25px;
+    background: #00000000;
+    border: none;
+    color: white;
+    max-width: 800px;
 }
 
 /* 敵＆自分カード全体div囲み */
@@ -58,28 +62,14 @@ img {
 
 /* ジョーカー用枠 */
 .joker_card_select{
-    position: absolute;
     display: none;
-    text-align: center;
-    background-color: #000000c2;
+    background-color: #00000073;
     border-radius: 20px;
     border: solid 3px #fff;
-    top: 140px;
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    width: fit-content;
-    justify-content:center;
 }
 #select_button_0,#select_button_1,#select_button_2{
-    display: none;
     border: none;
     background-color: #00000000;
-}
-.joker_card_select p {
-    color: #fff;
-    font-weight: bold;
-
 }
 
 /* プレイヤー選択ボタン用 */
@@ -88,37 +78,7 @@ img {
     border-radius: 20px;
     color: white;
     border: solid 3px #fff;
-    height: 40px;
-    text-align: center;
-    position: relative;
-    display: none;
-}
-#message_box{
-    background-color: #000000c2;
-    border-radius: 20px;
-    color: white;
-    border: solid 3px #fff;
-    visibility:hidden;
-    margin:0 auto;
-    height: 74px;
-}
-.message_box p{
-    width: fit-content;
-    margin: 5px auto;
-    font-weight: bold;
-    color: #fff;
-    font-size: 20px;
 }
 #discard,#next,#captured,#capture,#sacrifice,#draw{
     background-color: #00000000;
-    border: none;
-    visibility: hidden;
-    font-size: 25px;
-    background: #00000000;
-    color: white;
-    max-width: 800px;
-}
-.select_button_flex{
-    display: flex;
-    justify-content: center;
 }
