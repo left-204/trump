@@ -63,3 +63,7 @@ function rule_disp(){
         rule = 0;
     }
 }
+function message_box_reset(){
+    message_box.innerHTML = "";
+    message_box.style.visibility = "hidden";
+}
