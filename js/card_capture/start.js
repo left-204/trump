@@ -182,14 +182,8 @@ function re_draw_message(){
     next_button.style.backgroundColor = "#00000000";
     next_button.style.border = "none";
     next_button.style.color = "#fff";
-    next_button.style.fontWeight = "bold";
     next_button.style.fontSize = "20px";
     message_box.appendChild(text_message);
     message_box.appendChild(next_button);
     message_box.style.visibility = "visible";
-}
-
-function message_box_reset(){
-    message_box.innerHTML = "";
-    message_box.style.visibility = "hidden";
 }

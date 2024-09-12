@@ -33,12 +33,22 @@ async function captured() {
                     dis_button_disp();
                 }else {
                     console.log("絵柄は選べないです");
+                    message_box_reset();
+                    let text_message = document.createElement("p");
+                    text_message.innerHTML = "絵柄カードは選択できない!";
+                    message_box.appendChild(text_message);
+                    message_box.style.visibility = "visible";
                     captured_illust += 1;
                 }
-            }else{
-                console.log("チェックされてないよ");
             }
         }
+        }else{
+            console.log("チェックされてないよ");
+            message_box_reset();
+            let text_message = document.createElement("p");
+            text_message.innerHTML = "カードを一枚選択してください!";
+            message_box.appendChild(text_message);
+            message_box.style.visibility = "visible";
         }
     }
   }

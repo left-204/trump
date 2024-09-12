@@ -11,16 +11,20 @@ async function capture(){
     checked_player_value = 0;
     suit_check = 0;
     joker_exist = 0;
+    player_card_exist = 0;
+    oppo_card_exist = 0;
     //選択された場所をtrueにする
     for(let i = 0;i < 4;i++){
         if(player_checkbox[i].checked){
             player_hands[i] = true;
+            player_card_exist += 1;
             // console.log(player_card[i]);
         }else{
             player_hands[i] = false;
         }
         if(oppo_checkbox[i].checked){
             oppo_hands[i] = true;
+            oppo_card_exist += 1;
             // console.log(player_card[i]);
         }else{
             oppo_hands[i] = false;
@@ -42,10 +46,18 @@ async function capture(){
     console.log(checked_player)
     console.log(checked_oppo)
     //プレイヤー選択カードにジョーカーがあったら下へ
-    if(joker_exist == 0){
-        capture_execute(0);
-    }else {
-        joker_execute();
+    if(player_card_exist >= 1 && oppo_card_exist >= 1){
+        if(joker_exist == 0){
+            capture_execute(0);
+        }else {
+            joker_execute();
+        }
+    }else{
+        message_box_reset();
+        let text_message = document.createElement("p");
+        text_message.innerHTML = "カードを選択してください!";
+        message_box.appendChild(text_message);
+        message_box.style.visibility = "visible";
     }
 }
 let suit_check = 0;
@@ -100,11 +112,22 @@ async function capture_execute(joker_value){
             message_box_reset();
             dis_button_disp();
         }else{
+            console.log("値がたりないよ");
+            message_box_reset();
+            let text_message = document.createElement("p");
+            text_message.innerHTML = "合計値が足りない!";
+            message_box.appendChild(text_message);
+            message_box.style.visibility = "visible";
             checked_reset();
         }
         
     }else{
         console.log("スートが違うよ")
+        message_box_reset();
+        let text_message = document.createElement("p");
+        text_message.innerHTML = "スートが違います!";
+        message_box.appendChild(text_message);
+        message_box.style.visibility = "visible";
     }
 }
 
