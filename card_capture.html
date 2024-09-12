@@ -1,5 +1,4 @@
 <html>
-
 <head>
     <meta charset="UTF-8">
     <title>トランプ</title>
@@ -35,7 +34,7 @@
             <button class="button_captured" id="captured" onclick="captured()">捕獲される</button>
             <button class="button_capture" id="capture" onclick="capture()">捕獲する</button>
             <button class="button_sacrifice" id="sacrifice" onclick="sacrifice()">生贄</button>
-            <button class="button_draw" id="draw" onclick="draw()">ドロー</button>
+            <button class="button_draw" id="draw" onclick="draw()">捨てない</button>
         </div>
 
     <div id ="joker_card_select" class ="joker_card_select">
@@ -47,11 +46,12 @@
         </div>
     </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="js/card_capture/start.js"></script>
 <script src="js/card_capture/card.js"></script>
 <script src="js/card_capture/capture.js"></script>
 <script src="js/card_capture/captured.js"></script>
 <script src="js/card_capture/dis_card.js"></script>
 <script src="js/card_capture/sacrifice.js"></script>
-
+<script src="js/card_capture/disp_system.js"></script>
 </html>
