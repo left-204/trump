@@ -162,6 +162,12 @@ function checked_reset(){
     for(let i = 0 ; i<4; i ++){
         oppo_checkbox[i].checked = false;
         player_checkbox[i].checked = false;
+        $('#player_card_' + i).css({
+            backgroundColor : '#00000000',
+        })
+        $('#oppo_card_' + i).css({
+            backgroundColor : '#00000000',
+        })
     }
 }
 
@@ -178,6 +184,7 @@ async function player_capture_reset(){
     }
     let deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/player_deck/add/?cards=" + card_code;
     response = await fetch(deck_api);
+    console.log(response)
     //jsの型に変換
     deck = await response.json();
 }
