@@ -6,7 +6,9 @@
 </head>
 
 <body>
-    <div class="start" id="start">
+    <h1 class ="title">カードキャプチャー</h1>
+    <div class ="rule_space">
+        <button class ="batsu" onclick="rule_disp()">×</button>
         <p class = "explanation">
             カードキャプキャー<br>
             ＜手札内容＞<br>
@@ -38,8 +40,10 @@
             ３．相手の手札が補充されます。 ▶【手順１】へ<br>
             　　※勝利,敗北条件に達するまで繰り返します。<br>
         </p>
-        <button class="start_move" onclick="start()">スタート</button>
-        <button onclick ="rule_disp()">ルール</button>
+    </div>
+    <div class="start" id="start">
+        <button class ="start_move" onclick="start()">スタート</button><br>
+        <button class ="rule_button" onclick ="rule_disp()">ルール</button>
     </div>
     <div class="ALL_Card">
         <div id="display">
@@ -67,6 +71,7 @@
             <button class="button_capture" id="capture" onclick="capture()">捕獲する</button>
             <button class="button_sacrifice" id="sacrifice" onclick="sacrifice()">生贄</button>
             <button class="button_draw" id="draw" onclick="draw()">捨てない</button>
+            <button class="rule_game" onclick="rule_disp()">ルール</button>
         </div>
 
     <div id ="joker_card_select" class ="joker_card_select">
