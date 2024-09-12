@@ -39,6 +39,9 @@ async function sacrifice(){
                 right_just(oppo_card,1)
                 await fill_in()
                 oppo_set()
+                checked_reset();
+                message_box_reset();
+                dis_button_disp();
             }else{
                 console.log("チェックされてないよ");
             }
@@ -48,8 +51,4 @@ async function sacrifice(){
     }else {
         console.log("手札を2枚選んで臭いもしくは敵カードを一枚臭い");
     }
-    
-    checked_reset();
-    message_box_reset();
-    dis_button_disp();
 }

@@ -89,15 +89,18 @@ async function capture_execute(joker_value){
                     card_img[i].src ="https://www.deckofcardsapi.com/static/img/back.png";
                 }
             }
+            console.log(player_capture);
+            right_just(oppo_card,1);
+            await fill_in();
+            await oppo_set();
+            // await player_hand_fill();
+            checked_reset();
+            message_box_reset();
+            dis_button_disp();
+        }else{
+            checked_reset();
         }
-        console.log(player_capture);
-        right_just(oppo_card,1);
-        await fill_in();
-        await oppo_set();
-        // await player_hand_fill();
-        checked_reset();
-        message_box_reset();
-        dis_button_disp();
+        
     }else{
         console.log("スートが違うよ")
     }

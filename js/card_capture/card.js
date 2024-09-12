@@ -191,6 +191,7 @@ async function player_capture_reset(){
 
 async function oppo_deck_reset(){
     let card_code = "";
+    console.log(oppo_deck_history);
     for(let i = 0;i < oppo_deck_history.length;i++){  
         if(i != 0){
             card_code = card_code + "," + oppo_deck_history[i].code;
@@ -198,6 +199,7 @@ async function oppo_deck_reset(){
             card_code = oppo_deck_history[i].code;
         }
     }   
+    console.log(card_code)
     let deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/oppo_deck/add/?cards=" + card_code;
     response = await fetch(deck_api);
     //jsの型に変換
