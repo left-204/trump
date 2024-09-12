@@ -8,6 +8,7 @@ async function captured() {
                 captured_card += 1;
             }
         }
+        console.log(captured_card)
         if(captured_card == 1){
         for(let i = 0;i < 4;i++){
             if(player_checkbox[i].checked){

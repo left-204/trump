@@ -122,3 +122,12 @@ img {
     display: flex;
     justify-content: center;
 }
+.explanation{
+    padding-top: 20px;
+    background-color: #000000c2;
+    border-radius: 20px;
+    border: #fff solid 3px;
+    text-align: left;
+    color: #f9f5f5;
+    padding: 20px 100px;
+}
