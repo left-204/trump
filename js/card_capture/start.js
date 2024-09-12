@@ -23,7 +23,6 @@ let message_box = "";
 async function start(){
     //スタートボタンを消す
     let start_button = document.getElementById("start");
-    start_button.classList.add("start_button");
     start_button.style.display = "none";
     //ジョーカーが入ったデッキ生成
     response = await fetch(apiUrl);
