@@ -38,6 +38,8 @@ img {
 /* Startボタンの位置 */
 .title{
     color: #fff;
+    font-size: 40px;
+    font-weight: lighter;
     width: fit-content;
     margin: 0 auto;
     padding-top: 100px;
