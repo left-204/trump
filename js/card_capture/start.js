@@ -19,24 +19,25 @@ let illust_exist = 0;
 let player_deck ="";
 let start_hand_symbol =["2S","3S","4S","2D","3D","4D","2C","3C","4C","2H","3H","4H","X1","X2"];
 let message_box = "";
-
+//スタートボタンが押されたらスタート
 async function start(){
+    //スタートボタンを消す
     let start_button = document.getElementById("start");
     start_button.classList.add("start_button");
     start_button.style.display = "none";
-    //デッキ生成
+    //ジョーカーが入ったデッキ生成
     response = await fetch(apiUrl);
     //jsの型に変換
     deck = await response.json();
-    
+    //デッキのidだけ取得
     deck_id = deck.deck_id;
-
     //山札を分ける
     await divide();
-    //山札をシャッフルする
+    //敵山札のシャッフル
     await oppo_shuffle();
+    //自分山札のシャッフル
     await player_shuffle();
-
+    //カードの初期表示
     await set();
     
     illust_card_check();
@@ -61,14 +62,17 @@ async function divide(){
     response = await fetch(apiUrl_draw);
     //jsの型に変換
     deck = await response.json();
- 
-    //手札用の山札に分ける
+    //手札用の山札に分ける2~4+joker
     player_deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/player_deck/add/?cards=2S,3S,4S,2D,3D,4D,2C,3C,4C,2H,3H,4H,X1,X2";
     response = await fetch(player_deck_api);
     //jsの型に変換
     player_deck = await response.json();
-    player_card = player_deck.piles.player_deck;
+/******************************************************************/
+    //要検証
+    //player_card = player_deck.piles.player_deck;
+/******************************************************************/
     let card_code ="";
+    //2~4+jokerじゃない場合card_codeに入れる
     for(let i = 0;i < 54;i++){
         if(start_hand_symbol.includes(deck.cards[i].code)){
             
@@ -80,13 +84,13 @@ async function divide(){
             }
         }
     }
+    //apiに送信する
     let deck_api = "https://www.deckofcardsapi.com/api/deck/"+ deck_id +"/pile/oppo_deck/add/?cards=" + card_code;
     response = await fetch(deck_api);
     //jsの型に変換
     deck = await response.json();
 
 }
-
 
 async function oppo_shuffle(){
     //シャッフルする
@@ -105,25 +109,39 @@ async function player_shuffle() {
 
 let card_id = "";
 async function set(){
+    //絵札があるかあった場合1
     illust_exist = 0;
+    //敵手札を埋める
     for(let i = 0;i < 4;i++){
+        //一枚引く
         await oppo_draw();
+        //相手手札のimgタグidを取得
         card_id = document.getElementById("oppo_card_"+i);
+        //タグに対して手札のカードの画像を差し込み
         card_id.src = oppo_draw_card.cards[0].image;
+        //相手手札保持用の配列に入れる
         oppo_card[i] = oppo_draw_card.cards[0];
+        //絵柄カードだった場合数字になって帰ってくる
         oppo_card[i].value = numchange(oppo_card[i].value);
     }
     console.log("敵手札")
     console.log(oppo_card);
-
+    //自分のカードを埋める
     for(let i = 0;i < 4;i++){
-        await player_draw();  
+        //一枚引く
+        await player_draw();
+        //自分手札のimgタグidを取得 
         card_id = document.getElementById("player_card_"+i);
+        //タグに対して手札カードの画像を差し込み
         card_id.src = player_draw_card.cards[0].image;
+        //自分手札保持用の配列に入れる
         player_card[i] = player_draw_card.cards[0];
+        //絵柄カードだった場合数字になって帰ってくる
         player_card[i].value = numchange(player_card[i].value);
     }
-    
+    console.log("自分手札")
+    console.log(player_card);
+
     for(let i = 0;i < 4;i++){
         card_img[i] = document.getElementById("player_card_"+i);
         player_checkbox[i] = document.getElementById("player_card_"+ i +"_box");
@@ -150,7 +168,6 @@ async function oppo_set() {
 }
 function re_draw_message(){
     //console.log(message_box)
-    // .style.display = "block"
     let text_message = document.createElement("p");
     text_message.innerHTML = "初期相手手札に絵柄カードが含まれるため山札へ送り再度ドローします";
     let next_button = document.createElement("button");

@@ -25,7 +25,11 @@ img {
     width: 150px;
     height: auto;
 }
-
+#player_card_0,#player_card_1,#player_card_2,#player_card_3,
+#oppo_card_0,#oppo_card_1,#oppo_card_2,#oppo_card_3{
+    padding: 3px;
+    background-color: #00000000;
+}
 /* Startボタンの位置 */
 .start{
     margin : 20px 0;
