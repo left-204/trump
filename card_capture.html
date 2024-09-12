@@ -6,8 +6,27 @@
 </head>
 
 <body>
-    <div class="start">
-        <button class="start_move" id="start" onclick="start()">スタート</button>
+    <div class="start" id="start">
+        <p class = "explanation" style = "color: #f9f5f5; text-align: left;">
+            カードキャプキャー<br>
+            ＜手札内容＞<br>
+            ・相手手札は５～Aのカード全てです。<br>
+            ・プレイヤー手札は２～４の全てとJoker２枚です。<br>
+            ＜ルール説明＞<br>
+            プレイヤーが捕獲したカード、捨てたカードは<span style = "color: red;">済山</span>に置く。<br>
+            ・捕獲
+            ＜準備＞<br>
+            １．相手手札が４枚出てきます。(自動)<br>
+            ２．相手手札に絵柄またはAがある場合そのカード全てを相手山札の一番下に戻します。(自動)<br>
+            　　▶戻した枚数分山札から引かれます。なお、二回目絵柄またはAが出ても【準備２】は行いません。<br>
+            ３．プレイヤー手札は４枚引かれます。(自動)<br>
+            ＜手順＞<br>
+            １．相手の手札を見てプレイヤーの手札を捨てるか決め、捨てたいカードを選択し済山に置きます。<br>
+            ２．捕獲するor捕獲されるor生贄 のどれかの操作を行います。<br>
+            ３．相手の手札が補充されます。 ▶【手順１】へ<br>
+            　　※勝利,敗北条件に達するまで繰り返します。<br>
+        </p>
+        <button class="start_move" onclick="start()">スタート</button>
     </div>
     <div class="ALL_Card">
         <div id="display">

@@ -12,13 +12,13 @@ body{
 }
 
 /* CheckBoxとラジオボタンの透化 */
-/* input[type=radio]{
+input[type=radio]{
     display: none;
 }
 
 input[type=CheckBox]{
     display: none;
-} */
+}
 
 /* 全体image用 */
 img {
