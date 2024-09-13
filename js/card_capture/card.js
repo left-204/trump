@@ -280,12 +280,13 @@ function surrender_disp(){
 }
 
 function yes(){
-    let all_div = document.getElementsByClassName("All_card");
-    all_div[0].style.display = "none";
-    let start_div = document.getElementsByClassName("start");
-    start_div[0].style.display = "block";
-    let title = document.getElementsByClassName("title");
-    title[0].style.display = "block";
+    window.location.reload();
+    // let all_div = document.getElementsByClassName("All_card");
+    // all_div[0].style.display = "none";
+    // let start_div = document.getElementsByClassName("start");
+    // start_div[0].style.display = "block";
+    // let title = document.getElementsByClassName("title");
+    // title[0].style.display = "block";
 }
 function no(){
     let clear_div = document.getElementsByClassName("clear_div");
