@@ -227,3 +227,14 @@ img {
     width: fit-content;
     padding: 10px 20px;
   }
+  .clear_div{
+    top :130px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: none;
+  }
+  .clear_div img{
+    width: 70%;
+    }
