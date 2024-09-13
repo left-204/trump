@@ -17,8 +17,15 @@ async function oppo_draw(){
         response = await fetch(apiUrl_draw);
         console.log(response);
         //jsの型に変換
-        player_draw_card = await response.json();
+        oppo_draw_card = await response.json();
+        console.log(oppo_draw_card);
         oppo_deck_history.splice(0); 
+        let list_api = "https://www.deckofcardsapi.com/api/deck/" + deck_id + "/pile/oppo_deck/list/"
+        response = await fetch(list_api);
+        //jsの型に変換
+        list = await response.json();
+        console.log(list);
+
     }
     // console.log("山札から引きます");
     oppo_draw_card.cards[0].value = numchange(oppo_draw_card.cards[0].value);
@@ -240,4 +247,20 @@ function capture_phase_button(){
     explain_message.innerHTML = "捕獲を行います、できない場合は捕獲されるか、生贄にしてください";
     message_box.appendChild(explain_message);
     message_box.style.visibility = "visible";
+}
+
+function jamm_check(){
+    let player_card_illust = 0;
+    let oppo_card_illust = 0;
+    for(let i = 0;i < 4;i++){
+        if(player_card[i].value >= 11){
+            player_card_illust += 1;
+        }
+        if(oppo_card[i].value >= 11){
+            oppo_card_illust += 1;
+        }
+    }
+    if(player_card_illust == 4 && oppo_card_illust == 4){
+        
+    }
 }

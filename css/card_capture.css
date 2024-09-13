@@ -198,3 +198,24 @@ img {
     font-size: 25px;
     border: none;
   }
+  .surrender_div button{
+    background: #00000000;
+    color: white;
+    right: 30px;
+    font-size: 25px;
+    border: none;
+}
+  .surrender_div{
+    display: none;
+    background-color: #000000c2;
+    position: absolute;
+    color: white;
+    border: solid 3px #fff;
+    border-radius: 20px;
+    left: 0;
+    right: 0;
+    top: 100px;
+    margin: 0 auto;
+    width: fit-content;
+    padding: 10px 20px;
+  }

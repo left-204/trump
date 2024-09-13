@@ -33,12 +33,12 @@ async function sacrifice(){
                 message_box.style.visibility = "visible";
             }
         }else{
-            console.log("チェックされてないよ");
-            message_box_reset();
-            let text_message = document.createElement("p");
-            text_message.innerHTML = "カードを二枚選択してください!";
-            message_box.appendChild(text_message);
-            message_box.style.visibility = "visible";
+            // console.log("チェックされてないよ");
+            // message_box_reset();
+            // let text_message = document.createElement("p");
+            // text_message.innerHTML = "カードを二枚選択してください!";
+            // message_box.appendChild(text_message);
+            // message_box.style.visibility = "visible";
         }
     }
     // await player_hand_fill(); 
@@ -55,12 +55,7 @@ async function sacrifice(){
                 message_box_reset();
                 dis_button_disp();
             }else{
-                console.log("チェックされてないよ");
-                message_box_reset();
-                let text_message = document.createElement("p");
-                text_message.innerHTML = "敵カードを一枚選択してください!";
-                message_box.appendChild(text_message);
-                message_box.style.visibility = "visible";
+
             }
         }
         console.log(oppo_card)
