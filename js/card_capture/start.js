@@ -168,8 +168,8 @@ async function set(){
 async function oppo_set() {
     for(let i = 0;i < 4;i++){
         if(oppo_card[i] == null){
-            await oppo_draw();
-            oppo_card[i] = oppo_draw_card.cards[0];
+            // await oppo_draw();
+            oppo_card[i].image = "";
         }
         card_id = document.getElementById("oppo_card_"+i);
         card_id.src = oppo_card[i].image;
