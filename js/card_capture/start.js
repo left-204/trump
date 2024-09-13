@@ -21,6 +21,10 @@ let start_hand_symbol =["2S","3S","4S","2D","3D","4D","2C","3C","4C","2H","3H","
 let message_box = "";
 //スタートボタンが押されたらスタート
 async function start(){
+    let all_div = document.getElementsByClassName("All_card");
+    all_div[0].style.display = "block";
+    let surrender_div = document.getElementsByClassName("surrender_div");
+    surrender_div[0].style.display = "none";
     //スタートボタンを消す
     let start_button = document.getElementById("start");
     start_button.style.display = "none";
@@ -174,6 +178,7 @@ async function oppo_set() {
 }
 function re_draw_message(){
     //console.log(message_box)
+    message_box_reset()
     let text_message = document.createElement("p");
     text_message.innerHTML = "初期相手手札に絵柄カードが含まれるため山札へ送り再度ドローします";
     let next_button = document.createElement("button");
