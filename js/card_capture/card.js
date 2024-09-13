@@ -266,9 +266,17 @@ function jamm_check(){
     }
     
 }
+let surrender_onoff = 0
 function surrender_disp(){
-    let surrender_div = document.getElementsByClassName("surrender_div");
-    surrender_div[0].style.display = "block";
+    if(surrender_onoff == 0){
+        let surrender_div = document.getElementsByClassName("surrender_div");
+        surrender_div[0].style.display = "block";
+        surrender_onoff = 1;
+    }else{
+        let surrender_div = document.getElementsByClassName("surrender_div");
+        surrender_div[0].style.display = "none";
+        surrender_onoff = 0;
+    }
 }
 
 function yes(){
@@ -280,6 +288,6 @@ function yes(){
     title[0].style.display = "block";
 }
 function no(){
-    let surrender_div = document.getElementsByClassName("surrender_div");
-    surrender_div[0].style.display = "none";
+    let clear_div = document.getElementsByClassName("clear_div");
+    clear_div[0].style.display = "block";
 }
