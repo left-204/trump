@@ -228,7 +228,7 @@ img {
     padding: 10px 20px;
   }
   .clear_div{
-    top :130px;
+    top :180px;
     position: absolute;
     left: 0;
     right: 0;
@@ -237,4 +237,5 @@ img {
   }
   .clear_div img{
     width: 70%;
+    transform: rotate(15deg);
   }
