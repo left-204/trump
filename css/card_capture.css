@@ -205,6 +205,14 @@ img {
     font-size: 25px;
     border: none;
 }
+.surrender_button{
+    background: #00000000;
+    position: absolute;
+    color: white;
+    left: 30px;
+    font-size: 25px;
+    border: none;
+}
   .surrender_div{
     display: none;
     background-color: #000000c2;

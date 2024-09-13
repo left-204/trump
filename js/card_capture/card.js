@@ -99,7 +99,7 @@ function dis_button_disp(){
     text_message.innerHTML = "捨てるフェーズ";
     message_box.appendChild(text_message);
     let explain_message = document.createElement("p");
-    explain_message.innerHTML = "捨てるカードを選択してください捨てない場合は捨てない";
+    explain_message.innerHTML = "捨てるカードを選択してください捨てない場合は捨てないを押してください";
     message_box.appendChild(explain_message);
     message_box.style.visibility = "visible";
 }
@@ -261,6 +261,25 @@ function jamm_check(){
         }
     }
     if(player_card_illust == 4 && oppo_card_illust == 4){
-        
+        let surrender_button = document.getElementsByClassName("surrender_button");
+        surrender_button[0].style.display = "block";
     }
+    
+}
+function surrender_disp(){
+    let surrender_div = document.getElementsByClassName("surrender_div");
+    surrender_div[0].style.display = "block";
+}
+
+function yes(){
+    let all_div = document.getElementsByClassName("All_card");
+    all_div[0].style.display = "none";
+    let start_div = document.getElementsByClassName("start");
+    start_div[0].style.display = "block";
+    let title = document.getElementsByClassName("title");
+    title[0].style.display = "block";
+}
+function no(){
+    let surrender_div = document.getElementsByClassName("surrender_div");
+    surrender_div[0].style.display = "none";
 }
