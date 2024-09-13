@@ -64,7 +64,7 @@ async function sacrifice(){
         console.log("手札を2枚選んで臭いもしくは敵カードを一枚くさい");
         message_box_reset();
         let text_message = document.createElement("p");
-        text_message.innerHTML = "カードを二枚選択してください!";
+        text_message.innerHTML = "カードを二枚選択し、山札に戻す敵カードを１枚選んでください。!";
         message_box.appendChild(text_message);
         message_box.style.visibility = "visible";
     }
